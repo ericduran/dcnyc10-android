@@ -16,19 +16,19 @@
 
 package com.lullabot.android.apps.iosched.ui;
 
-import com.lullabot.android.apps.iosched.R;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract;
-
 import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
-import android.graphics.drawable.ColorDrawable;
 import android.provider.BaseColumns;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
-import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+
+import com.lullabot.android.apps.iosched.R;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract;
 
 /**
  * A {@link android.widget.CursorAdapter} that renders a {@link TracksQuery}.
@@ -70,11 +70,17 @@ public class TracksAdapter extends CursorAdapter {
 
             // Custom binding for the first item
             ((TextView) convertView.findViewById(android.R.id.text1)).setText(
-                    "(" + mActivity.getResources().getString(mIsSessions
-                            ? R.string.all_sessions_title
-                            : R.string.all_sandbox_title)
-                            + ")");
-            convertView.findViewById(android.R.id.icon1).setVisibility(View.INVISIBLE);
+              mActivity.getResources().getString(mIsSessions ? R.string.all_sessions_title : R.string.all_sandbox_title)
+            );
+
+            convertView.findViewById(android.R.id.icon1).setVisibility(View.VISIBLE);
+            // Switch to use the ico1 image
+            RelativeLayout.LayoutParams params =
+                new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT,
+                                                LayoutParams.WRAP_CONTENT);
+            params.addRule(RelativeLayout.RIGHT_OF, android.R.id.icon1);
+            params.addRule(RelativeLayout.CENTER_VERTICAL);
+            convertView.findViewById(android.R.id.text1).setLayoutParams(params);
 
             return convertView;
         }
@@ -131,10 +137,6 @@ public class TracksAdapter extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
         final TextView textView = (TextView) view.findViewById(android.R.id.text1);
         textView.setText(cursor.getString(TracksQuery.TRACK_NAME));
-
-        // Assign track color to visible block
-        final ImageView iconView = (ImageView) view.findViewById(android.R.id.icon1);
-        iconView.setImageDrawable(new ColorDrawable(cursor.getInt(TracksQuery.TRACK_COLOR)));
     }
 
     /** {@link com.lullabot.android.apps.iosched.provider.ScheduleContract.Tracks} query parameters. */
