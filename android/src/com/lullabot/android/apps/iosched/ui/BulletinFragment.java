@@ -40,9 +40,9 @@ import java.util.regex.Pattern;
  */
 public class BulletinFragment extends Fragment {
 
-    private static final Pattern sSiteUrlPattern = Pattern.compile("google\\.com\\/events\\/io");
+    private static final Pattern sSiteUrlPattern = Pattern.compile("lullabot\\.com");
     private static final String BULLETIN_URL =
-            "http://www.google.com/events/io/2011/mobile_announcements.html";
+            "http://www.lullabot.com/";
 
     private WebView mWebView;
     private View mLoadingSpinner;
