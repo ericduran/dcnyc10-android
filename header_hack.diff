@@ -1,0 +1,150 @@
+diff --git a/android/src/com/lullabot/android/apps/iosched/ui/TracksAdapter.java b/android/src/com/lullabot/android/apps/iosched/ui/TracksAdapter.java
+index c21bd12..c734fd1 100644
+--- a/android/src/com/lullabot/android/apps/iosched/ui/TracksAdapter.java
++++ b/android/src/com/lullabot/android/apps/iosched/ui/TracksAdapter.java
+@@ -16,20 +16,20 @@
+ 
+ package com.lullabot.android.apps.iosched.ui;
+ 
+-import com.lullabot.android.apps.iosched.R;
+-import com.lullabot.android.apps.iosched.provider.ScheduleContract;
+-
+ import android.app.Activity;
+ import android.content.Context;
+ import android.database.Cursor;
+-import android.graphics.drawable.ColorDrawable;
+ import android.provider.BaseColumns;
+ import android.view.View;
+ import android.view.ViewGroup;
+ import android.widget.CursorAdapter;
+-import android.widget.ImageView;
++import android.widget.RelativeLayout;
++import android.widget.RelativeLayout.LayoutParams;
+ import android.widget.TextView;
+ 
++import com.lullabot.android.apps.iosched.R;
++import com.lullabot.android.apps.iosched.provider.ScheduleContract;
++
+ /**
+  * A {@link android.widget.CursorAdapter} that renders a {@link TracksQuery}.
+  */
+@@ -70,14 +70,55 @@ public class TracksAdapter extends CursorAdapter {
+ 
+             // Custom binding for the first item
+             ((TextView) convertView.findViewById(android.R.id.text1)).setText(
+-                    "(" + mActivity.getResources().getString(mIsSessions
+-                            ? R.string.all_sessions_title
+-                            : R.string.all_sandbox_title)
+-                            + ")");
+-            convertView.findViewById(android.R.id.icon1).setVisibility(View.INVISIBLE);
++                    mActivity.getResources().getString(
++                    		mIsSessions ? R.string.all_sessions_title : R.string.all_sandbox_title));
++
++            convertView.findViewById(android.R.id.icon1).setVisibility(View.VISIBLE);
++            // Switch to use the ico1 image
++            RelativeLayout.LayoutParams params =
++                new RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT,
++                                                LayoutParams.WRAP_CONTENT);
++            params.addRule(RelativeLayout.RIGHT_OF, android.R.id.icon1);
++            params.addRule(RelativeLayout.CENTER_VERTICAL);
++            convertView.findViewById(android.R.id.text1).setLayoutParams(params);
++
++            return convertView;
++        }
++        if (mHasAllItem && position == 1) {
++            if (convertView == null) {
++                convertView = mActivity.getLayoutInflater().inflate(
++                        R.layout.list_item_track, parent, false);
++            }
++
++            // Custom binding for the Star item
++            ((TextView) convertView.findViewById(android.R.id.text1)).setText(
++                    mActivity.getResources().getString(R.string.btn_starred));
++
++            convertView.findViewById(android.R.id.icon2).setVisibility(View.VISIBLE);
+ 
+             return convertView;
+         }
++        // Set up the headers, I'm going to cheat because I suck! lol
++        // I'm going to display the hidden image when the track position is 2 and 5
++        // 2 is the beginning of the Browse by day and 5 is the Browse by Room.
++        if (mHasAllItem && position == 2) {
++            if (convertView == null) {
++                convertView = mActivity.getLayoutInflater().inflate(R.layout.list_item_track, parent, false);
++            }
++
++            ((TextView) convertView.findViewById(R.id.track_header)).setText(R.string.header_day);
++            convertView.findViewById(R.id.track_header).setVisibility(View.VISIBLE);
++        }
++        // Set up the headers
++        if (mHasAllItem && position == 5) {
++            if (convertView == null) {
++                convertView = mActivity.getLayoutInflater().inflate(R.layout.list_item_track, parent, false);
++            }
++
++            ((TextView) convertView.findViewById(R.id.track_header)).setText(R.string.header_room);
++            convertView.findViewById(R.id.track_header).setVisibility(View.VISIBLE);
++        }
++        
+         return super.getView(position - mPositionDisplacement, convertView, parent);
+     }
+ 
+@@ -86,6 +127,9 @@ public class TracksAdapter extends CursorAdapter {
+         if (mHasAllItem && position == 0) {
+             return null;
+         }
++        if (mHasAllItem && position == 1) {
++            return null;
++        }
+         return super.getItem(position - mPositionDisplacement);
+     }
+ 
+@@ -94,6 +138,9 @@ public class TracksAdapter extends CursorAdapter {
+         if (mHasAllItem && position == 0) {
+             return ALL_ITEM_ID;
+         }
++        if (mHasAllItem && position == 1) {
++            return ALL_ITEM_ID;
++        }
+         return super.getItemId(position - mPositionDisplacement);
+     }
+ 
+@@ -102,13 +149,16 @@ public class TracksAdapter extends CursorAdapter {
+         if (mHasAllItem && position == 0) {
+             return true;
+         }
++        if (mHasAllItem && position == 1) {
++            return true;
++        }
+         return super.isEnabled(position - mPositionDisplacement);
+     }
+ 
+     @Override
+     public int getViewTypeCount() {
+         // Add an item type for the "All" view.
+-        return super.getViewTypeCount() + 1;
++        return super.getViewTypeCount() + 2;
+     }
+ 
+     @Override
+@@ -116,6 +166,9 @@ public class TracksAdapter extends CursorAdapter {
+         if (mHasAllItem && position == 0) {
+             return getViewTypeCount() - 1;
+         }
++        if (mHasAllItem && position == 1) {
++            return getViewTypeCount() - 2;
++        }
+         return super.getItemViewType(position - mPositionDisplacement);
+     }
+ 
+@@ -131,10 +184,6 @@ public class TracksAdapter extends CursorAdapter {
+     public void bindView(View view, Context context, Cursor cursor) {
+         final TextView textView = (TextView) view.findViewById(android.R.id.text1);
+         textView.setText(cursor.getString(TracksQuery.TRACK_NAME));
+-
+-        // Assign track color to visible block
+-        final ImageView iconView = (ImageView) view.findViewById(android.R.id.icon1);
+-        iconView.setImageDrawable(new ColorDrawable(cursor.getInt(TracksQuery.TRACK_COLOR)));
+     }
+ 
+     /** {@link com.lullabot.android.apps.iosched.provider.ScheduleContract.Tracks} query parameters. */
