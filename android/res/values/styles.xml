@@ -13,7 +13,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
   -->
-
+ 
 <resources>
     <!-- Base application theme is the default theme. -->
     <style name="Theme" parent="android:style/Theme" />
@@ -209,5 +209,17 @@
         <item name="android:background">@drawable/btn</item>
     </style>
 
+    <style name="TrackRowText">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">22sp</item>
+    </style>
 
+    <style name="SessionRowTitle">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">#304964</item>            
+    </style>
+    <style name="SessionSubText">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">@color/body_text_2</item>
+    </style>
 </resources>
