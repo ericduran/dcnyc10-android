@@ -160,7 +160,6 @@
 
     <style name="WhatsOnButtonItem" parent="style/WhatsOnStaticItem">
         <item name="android:textColor">@color/accent_1</item>
-        <item name="android:background">@drawable/whats_on_button</item>
         <item name="android:paddingRight">@dimen/whats_on_button_right_padding</item>
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
