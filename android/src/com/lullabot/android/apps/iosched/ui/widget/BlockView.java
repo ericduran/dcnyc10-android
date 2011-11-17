@@ -16,9 +16,7 @@
 
 package com.lullabot.android.apps.iosched.ui.widget;
 
-import com.lullabot.android.apps.iosched.R;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Blocks;
-import com.lullabot.android.apps.iosched.util.UIUtils;
+import java.util.TimeZone;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -27,7 +25,9 @@ import android.graphics.drawable.LayerDrawable;
 import android.text.format.DateUtils;
 import android.widget.Button;
 
-import java.util.TimeZone;
+import com.lullabot.android.apps.iosched.R;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Blocks;
+import com.lullabot.android.apps.iosched.util.UIUtils;
 
 /**
  * Custom view that represents a {@link Blocks#BLOCK_ID} instance, including its

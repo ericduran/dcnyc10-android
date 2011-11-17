@@ -16,9 +16,14 @@
 
 package com.lullabot.android.apps.iosched.io;
 
-import com.lullabot.android.apps.iosched.provider.ScheduleContract;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Tracks;
-import com.lullabot.android.apps.iosched.util.Lists;
+import static com.lullabot.android.apps.iosched.util.ParserUtils.sanitizeId;
+import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
+import static org.xmlpull.v1.XmlPullParser.END_TAG;
+import static org.xmlpull.v1.XmlPullParser.START_TAG;
+import static org.xmlpull.v1.XmlPullParser.TEXT;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -27,14 +32,9 @@ import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
 import android.graphics.Color;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
-import static com.lullabot.android.apps.iosched.util.ParserUtils.sanitizeId;
-import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
-import static org.xmlpull.v1.XmlPullParser.END_TAG;
-import static org.xmlpull.v1.XmlPullParser.START_TAG;
-import static org.xmlpull.v1.XmlPullParser.TEXT;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Tracks;
+import com.lullabot.android.apps.iosched.util.Lists;
 
 public class LocalTracksHandler extends XmlHandler {
 

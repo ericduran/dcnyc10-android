@@ -16,12 +16,6 @@
 
 package com.lullabot.android.apps.iosched.util;
 
-import com.lullabot.android.apps.iosched.R;
-
-
-
-import com.lullabot.android.apps.iosched.ui.HomeActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,6 +31,9 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.lullabot.android.apps.iosched.R;
+import com.lullabot.android.apps.iosched.ui.HomeActivity;
+
 /**
  * A class that handles some common activity-related functionality in the app, such as setting up
  * the action bar. This class provides functioanlity useful for both phones and tablets, and does
@@ -44,7 +41,6 @@ import android.widget.TextView;
  */
 public class ActivityHelper {
     protected Activity mActivity;
-
     /**
      * Factory method for creating {@link ActivityHelper} objects for a given activity. Depending
      * on which device the app is running, either a basic helper or Honeycomb-specific helper will

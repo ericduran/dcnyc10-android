@@ -16,13 +16,13 @@
 
 package com.lullabot.android.apps.iosched.io;
 
-import com.lullabot.android.apps.iosched.provider.ScheduleContract;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Rooms;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Sessions;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Tracks;
-import com.lullabot.android.apps.iosched.provider.ScheduleDatabase.SessionsTracks;
-import com.lullabot.android.apps.iosched.util.Lists;
-import com.lullabot.android.apps.iosched.util.ParserUtils;
+import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
+import static org.xmlpull.v1.XmlPullParser.END_TAG;
+import static org.xmlpull.v1.XmlPullParser.START_TAG;
+import static org.xmlpull.v1.XmlPullParser.TEXT;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -32,13 +32,13 @@ import android.content.ContentResolver;
 import android.database.Cursor;
 import android.net.Uri;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
-import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
-import static org.xmlpull.v1.XmlPullParser.END_TAG;
-import static org.xmlpull.v1.XmlPullParser.START_TAG;
-import static org.xmlpull.v1.XmlPullParser.TEXT;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Rooms;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Sessions;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Tracks;
+import com.lullabot.android.apps.iosched.provider.ScheduleDatabase.SessionsTracks;
+import com.lullabot.android.apps.iosched.util.Lists;
+import com.lullabot.android.apps.iosched.util.ParserUtils;
 
 public class LocalSessionsHandler extends XmlHandler {
 

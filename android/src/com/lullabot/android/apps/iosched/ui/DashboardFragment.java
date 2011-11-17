@@ -16,6 +16,14 @@
 
 package com.lullabot.android.apps.iosched.ui;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import com.lullabot.android.apps.iosched.R;
 import com.lullabot.android.apps.iosched.provider.ScheduleContract;
 import com.lullabot.android.apps.iosched.ui.phone.ScheduleActivity;
@@ -24,13 +32,6 @@ import com.lullabot.android.apps.iosched.ui.tablet.SessionsMultiPaneActivity;
 import com.lullabot.android.apps.iosched.ui.tablet.VendorsMultiPaneActivity;
 import com.lullabot.android.apps.iosched.util.AnalyticsUtils;
 import com.lullabot.android.apps.iosched.util.UIUtils;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 public class DashboardFragment extends Fragment {
 
@@ -44,7 +45,9 @@ public class DashboardFragment extends Fragment {
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_dashboard, container);
 
-        // Attach event handlers
+        // Attach click Listeners.
+
+        // Schedule Button.
         root.findViewById(R.id.home_btn_schedule).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 fireTrackerEvent("Schedule");
@@ -53,81 +56,63 @@ public class DashboardFragment extends Fragment {
                 } else {
                     startActivity(new Intent(getActivity(), ScheduleActivity.class));
                 }
-                
             }
-            
         });
 
+        // Session Button.
         root.findViewById(R.id.home_btn_sessions).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 fireTrackerEvent("Sessions");
-                // Launch sessions list
                 if (UIUtils.isHoneycombTablet(getActivity())) {
                     startActivity(new Intent(getActivity(), SessionsMultiPaneActivity.class));
                 } else {
-                    final Intent intent = new Intent(Intent.ACTION_VIEW,
-                            ScheduleContract.Tracks.CONTENT_URI);
+                    final Intent intent = new Intent(Intent.ACTION_VIEW, ScheduleContract.Tracks.CONTENT_URI);
                     intent.putExtra(Intent.EXTRA_TITLE, getString(R.string.title_session_tracks));
-                    intent.putExtra(TracksFragment.EXTRA_NEXT_TYPE,
-                            TracksFragment.NEXT_TYPE_SESSIONS);
+                    intent.putExtra(TracksFragment.EXTRA_NEXT_TYPE, TracksFragment.NEXT_TYPE_SESSIONS);
                     startActivity(intent);
                 }
-
             }
         });
 
-        /** Star Button **/
-//        root.findViewById(R.id.home_btn_starred).setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View view) {
-//                fireTrackerEvent("Starred");
-//                // Launch list of sessions and vendors the user has starred
-//                startActivity(new Intent(getActivity(), StarredActivity.class));                
-//            }
-//        });
-        /** Info Button **/
-        root.findViewById(R.id.home_btn_info).setOnClickListener(new View.OnClickListener() {
+        // Map Button.
+        root.findViewById(R.id.home_btn_map).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                fireTrackerEvent("Info");
-                // Launch list of sessions and vendors the user has starred
-                startActivity(new Intent(getActivity(), TagStreamActivity.class));                
+                fireTrackerEvent("Map");
+            	String uri = "geo:40.770434,-73.987663?q=40.770434,-73.987663(DCNYC10)";
+            	startActivity(new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri)));
             }
         });
 
+        // Tweets Button.
+        root.findViewById(R.id.home_btn_tweets).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                fireTrackerEvent("Twitter");
+                startActivity(new Intent(getActivity(), TwitterStreamActivity.class));                
+            }
+        });
+
+        // Sponsors Button.
         root.findViewById(R.id.home_btn_sponsors).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 fireTrackerEvent("Sandbox");
-                // Launch vendors list
                 if (UIUtils.isHoneycombTablet(getActivity())) {
                     startActivity(new Intent(getActivity(), VendorsMultiPaneActivity.class));
                 } else {
-                    final Intent intent = new Intent(Intent.ACTION_VIEW,
-                            ScheduleContract.Tracks.CONTENT_URI);
+                    final Intent intent = new Intent(Intent.ACTION_VIEW, ScheduleContract.Tracks.CONTENT_URI);
                     intent.putExtra(Intent.EXTRA_TITLE, getString(R.string.title_vendor_tracks));
-                    intent.putExtra(TracksFragment.EXTRA_NEXT_TYPE,
-                            TracksFragment.NEXT_TYPE_VENDORS);
+                    intent.putExtra(TracksFragment.EXTRA_NEXT_TYPE, TracksFragment.NEXT_TYPE_VENDORS);
                     startActivity(intent);
                 }
             }
         });
-
-        root.findViewById(R.id.home_btn_map).setOnClickListener(new View.OnClickListener() {
+        
+        // Star Button.
+        root.findViewById(R.id.home_btn_starred).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                // Launch map of conference venue
-                fireTrackerEvent("Map");
-                startActivity(new Intent(getActivity(),
-                        UIUtils.getMapActivityClass(getActivity())));
+                fireTrackerEvent("Starred");
+                startActivity(new Intent(getActivity(), StarredActivity.class));                
             }
         });
-
-//        root.findViewById(R.id.home_btn_announcements).setOnClickListener(
-//                new View.OnClickListener() {
-//                    public void onClick(View view) {
-//                        // splicing in tag streamer
-//                        fireTrackerEvent("Bulletin");
-//                        Intent intent = new Intent(getActivity(), BulletinActivity.class);
-//                        startActivity(intent);
-//                    }
-//                });
 
         return root;
     }

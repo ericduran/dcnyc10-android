@@ -16,12 +16,6 @@
 
 package com.lullabot.android.apps.iosched.ui;
 
-import com.lullabot.android.apps.iosched.R;
-import com.lullabot.android.apps.iosched.service.SyncService;
-import com.lullabot.android.apps.iosched.util.AnalyticsUtils;
-import com.lullabot.android.apps.iosched.util.DetachableResultReceiver;
-import com.lullabot.android.apps.iosched.util.EulaHelper;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,6 +25,12 @@ import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.lullabot.android.apps.iosched.R;
+import com.lullabot.android.apps.iosched.service.SyncService;
+import com.lullabot.android.apps.iosched.util.AnalyticsUtils;
+import com.lullabot.android.apps.iosched.util.DetachableResultReceiver;
+import com.lullabot.android.apps.iosched.util.EulaHelper;
 
 /**
  * Front-door {@link Activity} that displays high-level features the schedule application offers to

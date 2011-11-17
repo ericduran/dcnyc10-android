@@ -16,14 +16,14 @@
 
 package com.lullabot.android.apps.iosched.ui.widget;
 
-import com.lullabot.android.apps.iosched.R;
-import com.lullabot.android.apps.iosched.util.UIUtils;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.lullabot.android.apps.iosched.R;
+import com.lullabot.android.apps.iosched.util.UIUtils;
 
 /**
  * Custom layout that contains and organizes a {@link TimeRulerView} and several

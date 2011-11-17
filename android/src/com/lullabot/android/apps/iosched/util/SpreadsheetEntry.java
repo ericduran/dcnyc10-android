@@ -16,20 +16,20 @@
 
 package com.lullabot.android.apps.iosched.util;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import static com.lullabot.android.apps.iosched.util.ParserUtils.AtomTags.CONTENT;
 import static com.lullabot.android.apps.iosched.util.ParserUtils.AtomTags.UPDATED;
 import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
 import static org.xmlpull.v1.XmlPullParser.END_TAG;
 import static org.xmlpull.v1.XmlPullParser.START_TAG;
 import static org.xmlpull.v1.XmlPullParser.TEXT;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
 public class SpreadsheetEntry extends HashMap<String, String> {
 

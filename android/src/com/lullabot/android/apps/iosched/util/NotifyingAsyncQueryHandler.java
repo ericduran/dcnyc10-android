@@ -16,14 +16,14 @@
 
 package com.lullabot.android.apps.iosched.util;
 
+import java.lang.ref.WeakReference;
+
 import android.content.AsyncQueryHandler;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-
-import java.lang.ref.WeakReference;
 
 /**
  * Slightly more abstract {@link AsyncQueryHandler} that helps keep a

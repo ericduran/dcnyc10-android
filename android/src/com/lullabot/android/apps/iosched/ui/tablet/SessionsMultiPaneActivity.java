@@ -16,6 +16,11 @@
 
 package com.lullabot.android.apps.iosched.ui.tablet;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.view.ViewGroup;
+
 import com.lullabot.android.apps.iosched.R;
 import com.lullabot.android.apps.iosched.provider.ScheduleContract;
 import com.lullabot.android.apps.iosched.ui.BaseMultiPaneActivity;
@@ -24,11 +29,6 @@ import com.lullabot.android.apps.iosched.ui.SessionsFragment;
 import com.lullabot.android.apps.iosched.ui.TracksFragment;
 import com.lullabot.android.apps.iosched.ui.phone.SessionDetailActivity;
 import com.lullabot.android.apps.iosched.ui.phone.SessionsActivity;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.view.ViewGroup;
 
 /**
  * A multi-pane activity, consisting of a {@link TracksDropdownFragment}, a

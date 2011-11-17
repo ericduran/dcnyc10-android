@@ -16,8 +16,6 @@
 
 package com.lullabot.android.apps.iosched.ui.widget;
 
-import com.lullabot.android.apps.iosched.R;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -29,6 +27,8 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+
+import com.lullabot.android.apps.iosched.R;
 
 /**
  * An {@link ImageView} that draws its contents inside a mask and draws a border drawable on top.

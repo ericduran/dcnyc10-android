@@ -16,11 +16,10 @@
 
 package com.lullabot.android.apps.iosched.util;
 
-import com.lullabot.android.apps.iosched.R;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Blocks;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Rooms;
-import com.lullabot.android.apps.iosched.ui.phone.MapActivity;
-import com.lullabot.android.apps.iosched.ui.tablet.MapMultiPaneActivity;
+import java.util.Formatter;
+import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import android.content.Context;
 import android.content.Intent;
@@ -44,10 +43,11 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.StyleSpan;
 import android.widget.TextView;
 
-import java.util.Formatter;
-import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
+import com.lullabot.android.apps.iosched.R;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Blocks;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Rooms;
+import com.lullabot.android.apps.iosched.ui.phone.MapActivity;
+import com.lullabot.android.apps.iosched.ui.tablet.MapMultiPaneActivity;
 
 /**
  * An assortment of UI helpers.
@@ -60,11 +60,11 @@ public class UIUtils {
     public static final TimeZone CONFERENCE_TIME_ZONE = TimeZone.getTimeZone("America/New_York");
 
     public static final long CONFERENCE_START_MILLIS = ParserUtils.parseTime(
-            "2011-10-12T09:00:00.000-05:00");
+            "2011-12-10T09:00:09.000-05:00");
     public static final long CONFERENCE_END_MILLIS = ParserUtils.parseTime(
-            "2011-10-14T18:00:00.000-05:00");
+            "2011-12-10T18:00:18.000-05:00");
 
-    public static final Uri CONFERENCE_URL = Uri.parse("http://www.google.com/events/io/2011/");
+    public static final Uri CONFERENCE_URL = Uri.parse("http://drupalcampnyc.org/");
 
     /** Flags used with {@link DateUtils#formatDateRange}. */
     private static final int TIME_FLAGS = DateUtils.FORMAT_SHOW_TIME
@@ -85,11 +85,7 @@ public class UIUtils {
             String roomName, Context context) {
         TimeZone.setDefault(CONFERENCE_TIME_ZONE);
 
-        // NOTE: There is an efficient version of formatDateRange in Eclair and
-        // beyond that allows you to recycle a StringBuilder.
-        final CharSequence timeString = DateUtils.formatDateRange(context,
-                blockStart, blockEnd, TIME_FLAGS);
-
+        final CharSequence timeString = DateUtils.formatDateTime(context, blockStart, DateUtils.FORMAT_SHOW_TIME);
         return context.getString(R.string.session_subtitle, timeString, roomName);
     }
 

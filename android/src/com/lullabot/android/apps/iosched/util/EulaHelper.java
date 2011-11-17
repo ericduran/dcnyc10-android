@@ -16,8 +16,6 @@
 
 package com.lullabot.android.apps.iosched.util;
 
-import com.lullabot.android.apps.iosched.R;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -25,6 +23,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
+import com.lullabot.android.apps.iosched.R;
 
 /**
  * A helper for showing EULAs and storing a {@link SharedPreferences} bit indicating whether the
@@ -71,8 +70,6 @@ public class EulaHelper {
                         }
                     });
         } else {
-            // If they haven't accepted the EULA allow, show accept/decline buttons and exit on
-            // decline.
             eula
                     .setPositiveButton(R.string.accept,
                             new android.content.DialogInterface.OnClickListener() {

@@ -72,6 +72,7 @@
         <item name="android:clickable">false</item>
         <item name="android:scaleType">center</item>
         <item name="android:contentDescription">@string/description_logo</item>
+        <item name="android:paddingRight">16dp</item>
         <item name="android:src">@drawable/actionbar_logo</item>
     </style>
 
@@ -122,10 +123,6 @@
 
     <!-- a simple list item is one whose container and content are the same view -->
     <style name="SimpleListItem" parent="style/ListItemContainerBase">
-        <item name="android:paddingLeft">10dp</item>
-        <item name="android:paddingRight">10dp</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingBottom">8dp</item>
     </style>
 
     <!-- used for more complex list items, e.g. those with stars aligned to the top-right -->

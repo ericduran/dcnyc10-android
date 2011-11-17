@@ -16,8 +16,6 @@
 
 package com.lullabot.android.apps.iosched.ui;
 
-import com.lullabot.android.apps.iosched.util.ActivityHelper;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,6 +23,8 @@ import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.lullabot.android.apps.iosched.util.ActivityHelper;
 
 /**
  * A base activity that defers common functionality across app activities to an

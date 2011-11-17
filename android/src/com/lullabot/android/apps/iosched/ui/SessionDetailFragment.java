@@ -16,16 +16,6 @@
 
 package com.lullabot.android.apps.iosched.ui;
 
-import com.lullabot.android.apps.iosched.R;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract;
-import com.lullabot.android.apps.iosched.util.ActivityHelper;
-import com.lullabot.android.apps.iosched.util.AnalyticsUtils;
-import com.lullabot.android.apps.iosched.util.BitmapUtils;
-import com.lullabot.android.apps.iosched.util.CatchNotesHelper;
-import com.lullabot.android.apps.iosched.util.FractionalTouchDelegate;
-import com.lullabot.android.apps.iosched.util.NotifyingAsyncQueryHandler;
-import com.lullabot.android.apps.iosched.util.UIUtils;
-
 import android.content.BroadcastReceiver;
 import android.content.ContentValues;
 import android.content.Context;
@@ -43,7 +33,6 @@ import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.StyleSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -54,6 +43,16 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
+
+import com.lullabot.android.apps.iosched.R;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract;
+import com.lullabot.android.apps.iosched.util.ActivityHelper;
+import com.lullabot.android.apps.iosched.util.AnalyticsUtils;
+import com.lullabot.android.apps.iosched.util.BitmapUtils;
+import com.lullabot.android.apps.iosched.util.CatchNotesHelper;
+import com.lullabot.android.apps.iosched.util.FractionalTouchDelegate;
+import com.lullabot.android.apps.iosched.util.NotifyingAsyncQueryHandler;
+import com.lullabot.android.apps.iosched.util.UIUtils;
 
 /**
  * A fragment that shows detail information for a session, including session title, abstract,
@@ -176,7 +175,6 @@ public class SessionDetailFragment extends Fragment implements
         FractionalTouchDelegate.setupDelegate(starParent, mStarred, new RectF(0.6f, 0f, 1f, 0.8f));
 
         mAbstract = (TextView) mRootView.findViewById(R.id.session_abstract);
-        mRequirements = (TextView) mRootView.findViewById(R.id.session_requirements);
 
         setupSummaryTab();
         setupNotesTab();
@@ -270,29 +268,7 @@ public class SessionDetailFragment extends Fragment implements
             if (TextUtils.isEmpty(mUrl)) {
                 mUrl = "";
             }
-
             mHashtag = cursor.getString(SessionsQuery.HASHTAG);
-            mTagDisplay = (TextView) mRootView.findViewById(R.id.session_tags_button);
-            if (!TextUtils.isEmpty(mHashtag)) {
-                // Create the button text
-                SpannableStringBuilder sb = new SpannableStringBuilder();
-                sb.append(getString(R.string.tag_stream) + " ");
-                int boldStart = sb.length();
-                sb.append(getHashtagsString());
-                sb.setSpan(sBoldSpan, boldStart, sb.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-                mTagDisplay.setText(sb);
-
-                mTagDisplay.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        Intent intent = new Intent(getActivity(), TagStreamActivity.class);
-                        intent.putExtra(TagStreamFragment.EXTRA_QUERY, getHashtagsString());
-                        startActivity(intent);
-                    }
-                });
-            } else {
-                mTagDisplay.setVisibility(View.GONE);
-            }
 
             mRoomId = cursor.getString(SessionsQuery.ROOM_ID);
 
@@ -309,16 +285,6 @@ public class SessionDetailFragment extends Fragment implements
                 mHasSummaryContent = true;
             } else {
                 mAbstract.setVisibility(View.GONE);
-            }
-
-            final View requirementsBlock = mRootView.findViewById(R.id.session_requirements_block);
-            final String sessionRequirements = cursor.getString(SessionsQuery.REQUIREMENTS);
-            if (!TextUtils.isEmpty(sessionRequirements)) {
-                UIUtils.setTextMaybeHtml(mRequirements, sessionRequirements);
-                requirementsBlock.setVisibility(View.VISIBLE);
-                mHasSummaryContent = true;
-            } else {
-                requirementsBlock.setVisibility(View.GONE);
             }
 
             // Show empty message when all data is loaded, and nothing to show
@@ -633,7 +599,7 @@ public class SessionDetailFragment extends Fragment implements
 
     private String getHashtagsString() {
         if (!TextUtils.isEmpty(mHashtag)) {
-            return TagStreamFragment.CONFERENCE_HASHTAG + " #" + mHashtag;
+            return TagStreamFragment.CONFERENCE_HASHTAG + " " + mHashtag;
         } else {
             return TagStreamFragment.CONFERENCE_HASHTAG;
         }

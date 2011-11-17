@@ -16,12 +16,6 @@
 
 package com.lullabot.android.apps.iosched.ui;
 
-import com.lullabot.android.apps.iosched.R;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Rooms;
-import com.lullabot.android.apps.iosched.util.AnalyticsUtils;
-import com.lullabot.android.apps.iosched.util.ParserUtils;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -39,6 +33,12 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.lullabot.android.apps.iosched.R;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Rooms;
+import com.lullabot.android.apps.iosched.util.AnalyticsUtils;
+import com.lullabot.android.apps.iosched.util.ParserUtils;
+
 /**
  * Shows a {@link WebView} with a map of the conference venue.
  */
@@ -50,13 +50,11 @@ public class MapFragment extends Fragment {
      */
     public static final String EXTRA_ROOM = "com.google.android.iosched.extra.ROOM";
 
-    private static final String MAP_JSI_NAME = "MAP_CONTAINER";
-    private static final String MAP_URL = "http://www.google.com/events/io/2011/embed.html";
+    private static final String MAP_URL = "http://maps.google.com/maps/ms?vpsrc=6&ctz=240&ie=UTF8&msa=0&msid=203649348921880554562.0004af21084cf6cb802ee&ll=40.770434,-73.987663&spn=0,0&t=m&source=embed";
     private static boolean CLEAR_CACHE_ON_LOAD = false;
 
     private WebView mWebView;
     private View mLoadingSpinner;
-    private boolean mMapInitialized = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,7 +76,6 @@ public class MapFragment extends Fragment {
 
         mLoadingSpinner = root.findViewById(R.id.loading_spinner);
         mWebView = (WebView) root.findViewById(R.id.webview);
-        mWebView.setWebChromeClient(mWebChromeClient);
         mWebView.setWebViewClient(mWebViewClient);
 
         mWebView.post(new Runnable() {
@@ -89,9 +86,7 @@ public class MapFragment extends Fragment {
                 }
 
                 mWebView.getSettings().setJavaScriptEnabled(true);
-                mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(false);
                 mWebView.loadUrl(MAP_URL);
-                mWebView.addJavascriptInterface(mMapJsiImpl, MAP_JSI_NAME);
             }
         });
 
@@ -114,42 +109,6 @@ public class MapFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    private void runJs(String js) {
-        if (Log.isLoggable(TAG, Log.DEBUG)) {
-            Log.d(TAG, "Loading javascript:" + js);
-        }
-        mWebView.loadUrl("javascript:" + js);
-    }
-
-    /**
-     * Helper method to escape JavaScript strings. Useful when passing strings to a WebView via
-     * "javascript:" calls.
-     */
-    private static String escapeJsString(String s) {
-        if (s == null) {
-            return "";
-        }
-
-        return s.replace("'", "\\'").replace("\"", "\\\"");
-    }
-
-    public void panLeft(float screenFraction) {
-        runJs("IoMap.panLeft('" + screenFraction + "');");
-    }
-
-    /**
-     * I/O Conference Map JavaScript interface.
-     */
-    private interface MapJsi {
-        void openContentInfo(String test);
-        void onMapReady();
-    }
-
-    private WebChromeClient mWebChromeClient = new WebChromeClient() {
-        public void onConsoleMessage(String message, int lineNumber, String sourceID) {
-            Log.i(TAG, "JS Console message: (" + sourceID + ": " + lineNumber + ") " + message);
-        }
-    };
 
     private WebViewClient mWebViewClient = new WebViewClient() {
         @Override
@@ -173,46 +132,6 @@ public class MapFragment extends Fragment {
             Toast.makeText(view.getContext(), "Error " + errorCode + ": " + description,
                     Toast.LENGTH_LONG).show();
             super.onReceivedError(view, errorCode, description, failingUrl);
-        }
-    };
-
-    private MapJsi mMapJsiImpl = new MapJsi() {
-        public void openContentInfo(String roomId) {
-            final String possibleTrackId = ParserUtils.translateTrackIdAlias(roomId);
-            final Intent intent;
-            if (ParserUtils.LOCAL_TRACK_IDS.contains(possibleTrackId)) {
-                // This is a track; open up the sandbox for the track, since room IDs that are
-                // track IDs are sandbox areas in the map.
-                Uri trackVendorsUri = ScheduleContract.Tracks.buildVendorsUri(possibleTrackId);
-                intent = new Intent(Intent.ACTION_VIEW, trackVendorsUri);
-            } else {
-                Uri roomUri = Rooms.buildSessionsDirUri(roomId);
-                intent = new Intent(Intent.ACTION_VIEW, roomUri);
-            }
-            getActivity().runOnUiThread(new Runnable() {
-                public void run() {
-                    ((BaseActivity) getActivity()).openActivityOrFragment(intent);
-                }
-            });
-        }
-
-        public void onMapReady() {
-            if (Log.isLoggable(TAG, Log.DEBUG)) {
-                Log.d(TAG, "onMapReady");
-            }
-
-            final Intent intent = BaseActivity.fragmentArgumentsToIntent(getArguments());
-
-            String showRoomId = null;
-            if (!mMapInitialized && intent.hasExtra(EXTRA_ROOM)) {
-                showRoomId = intent.getStringExtra(EXTRA_ROOM);
-            }
-
-            if (showRoomId != null) {
-                runJs("IoMap.showLocationById('" + escapeJsString(showRoomId) + "');");
-            }
-
-            mMapInitialized = true;
         }
     };
 }

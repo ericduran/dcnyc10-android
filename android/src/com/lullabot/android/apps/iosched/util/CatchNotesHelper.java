@@ -16,14 +16,14 @@
 
 package com.lullabot.android.apps.iosched.util;
 
-import com.lullabot.android.apps.iosched.R;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
+
+import com.lullabot.android.apps.iosched.R;
 
 /**
  * Helper class for the Catch Notes integration, based on example code at

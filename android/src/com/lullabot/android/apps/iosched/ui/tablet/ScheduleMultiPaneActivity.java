@@ -16,13 +16,6 @@
 
 package com.lullabot.android.apps.iosched.ui.tablet;
 
-import com.lullabot.android.apps.iosched.R;
-import com.lullabot.android.apps.iosched.ui.BaseMultiPaneActivity;
-import com.lullabot.android.apps.iosched.ui.SessionDetailFragment;
-import com.lullabot.android.apps.iosched.ui.SessionsFragment;
-import com.lullabot.android.apps.iosched.ui.phone.SessionDetailActivity;
-import com.lullabot.android.apps.iosched.ui.phone.SessionsActivity;
-
 import android.app.FragmentBreadCrumbs;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -30,6 +23,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.lullabot.android.apps.iosched.R;
+import com.lullabot.android.apps.iosched.ui.BaseMultiPaneActivity;
+import com.lullabot.android.apps.iosched.ui.SessionDetailFragment;
+import com.lullabot.android.apps.iosched.ui.SessionsFragment;
+import com.lullabot.android.apps.iosched.ui.phone.SessionDetailActivity;
+import com.lullabot.android.apps.iosched.ui.phone.SessionsActivity;
 
 /**
  * A multi-pane activity, where the primary navigation pane is a

@@ -16,12 +16,6 @@
 
 package com.lullabot.android.apps.iosched.ui;
 
-import com.lullabot.android.apps.iosched.R;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Sessions;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Vendors;
-import com.lullabot.android.apps.iosched.ui.phone.SessionDetailActivity;
-import com.lullabot.android.apps.iosched.ui.phone.VendorDetailActivity;
-
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,6 +26,12 @@ import android.widget.FrameLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
+
+import com.lullabot.android.apps.iosched.R;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Sessions;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Vendors;
+import com.lullabot.android.apps.iosched.ui.phone.SessionDetailActivity;
+import com.lullabot.android.apps.iosched.ui.phone.VendorDetailActivity;
 
 /**
  * An activity that shows session and sandbox search results. This activity can be either single

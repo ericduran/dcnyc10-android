@@ -16,8 +16,11 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/bg_session_row"
     style="@style/ListItemContainer">
-    <!-- TODO: swap out with better star drawable when disabled -->
+   <RelativeLayout android:id="@+id/list_item_wrapper"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
     <ImageView android:id="@+id/star_button"
         android:layout_gravity="top|left"
         android:layout_width="wrap_content"
@@ -28,24 +31,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/indicator_inactive" />
+    </RelativeLayout>
     <RelativeLayout android:id="@+id/list_item_session"
-        android:layout_height="wrap_content"
         android:layout_toLeftOf="@id/star_button_off"
         android:paddingLeft="60dp"
         style="@style/ListItemContent"
-        android:layout_width="fill_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent">
         <TextView android:id="@+id/session_title"
             android:layout_toLeftOf="@id/star_button"
             android:layout_alignParentLeft="true"
             android:layout_width="fill_parent"
+            android:textColor="#333333"
             android:layout_height="wrap_content"
             style="@style/ListItemTitle" />
         <TextView android:id="@+id/session_subtitle"
             android:layout_below="@id/session_title"
             android:layout_toLeftOf="@id/star_button"
             android:layout_alignParentLeft="true"
+            android:textColor="#cc3333"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             style="@style/ListItemSubtitle" />
-    </RelativeLayout>
+        <ImageView android:layout_height="wrap_content" 
+        android:src="@drawable/bg_listing_arrow" 
+        android:id="@+id/session_listing_arrow" 
+        android:layout_width="wrap_content" 
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/session_title" /> 
+  </RelativeLayout>
 </FrameLayout>

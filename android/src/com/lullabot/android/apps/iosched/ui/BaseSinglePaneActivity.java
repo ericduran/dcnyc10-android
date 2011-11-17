@@ -16,11 +16,11 @@
 
 package com.lullabot.android.apps.iosched.ui;
 
-import com.lullabot.android.apps.iosched.R;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+
+import com.lullabot.android.apps.iosched.R;
 
 /**
  * A {@link BaseActivity} that simply contains a single fragment. The intent used to invoke this

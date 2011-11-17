@@ -16,12 +16,7 @@
 
 package com.lullabot.android.apps.iosched.ui;
 
-import com.lullabot.android.apps.iosched.R;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract;
-import com.lullabot.android.apps.iosched.util.ActivityHelper;
-import com.lullabot.android.apps.iosched.util.AnalyticsUtils;
-import com.lullabot.android.apps.iosched.util.NotifyingAsyncQueryHandler;
-
+import static com.lullabot.android.apps.iosched.util.UIUtils.buildStyledSnippet;
 import android.content.Context;
 import android.content.Intent;
 import android.database.ContentObserver;
@@ -39,7 +34,11 @@ import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import static com.lullabot.android.apps.iosched.util.UIUtils.buildStyledSnippet;
+import com.lullabot.android.apps.iosched.R;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract;
+import com.lullabot.android.apps.iosched.util.ActivityHelper;
+import com.lullabot.android.apps.iosched.util.AnalyticsUtils;
+import com.lullabot.android.apps.iosched.util.NotifyingAsyncQueryHandler;
 
 /**
  * A {@link ListFragment} showing a list of sandbox comapnies.

@@ -16,13 +16,13 @@
 
 package com.lullabot.android.apps.iosched.util;
 
-import com.lullabot.android.apps.iosched.R;
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.lullabot.android.apps.iosched.R;
 
 /**
  * An extension of {@link ActivityHelper} that provides Android 3.0-specific functionality for

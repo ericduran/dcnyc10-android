@@ -16,13 +16,8 @@
 
 package com.lullabot.android.apps.iosched.ui;
 
-import com.lullabot.android.apps.iosched.R;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract;
-import com.lullabot.android.apps.iosched.util.ActivityHelper;
-import com.lullabot.android.apps.iosched.util.AnalyticsUtils;
-import com.lullabot.android.apps.iosched.util.NotifyingAsyncQueryHandler;
-import com.lullabot.android.apps.iosched.util.UIUtils;
-
+import static com.lullabot.android.apps.iosched.util.UIUtils.buildStyledSnippet;
+import static com.lullabot.android.apps.iosched.util.UIUtils.formatSessionSubtitle;
 import android.content.Context;
 import android.content.Intent;
 import android.database.ContentObserver;
@@ -41,8 +36,12 @@ import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import static com.lullabot.android.apps.iosched.util.UIUtils.buildStyledSnippet;
-import static com.lullabot.android.apps.iosched.util.UIUtils.formatSessionSubtitle;
+import com.lullabot.android.apps.iosched.R;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract;
+import com.lullabot.android.apps.iosched.util.ActivityHelper;
+import com.lullabot.android.apps.iosched.util.AnalyticsUtils;
+import com.lullabot.android.apps.iosched.util.NotifyingAsyncQueryHandler;
+import com.lullabot.android.apps.iosched.util.UIUtils;
 
 /**
  * A {@link ListFragment} showing a list of sessions.
@@ -74,6 +73,8 @@ public class SessionsFragment extends ListFragment implements
     public void reloadFromArguments(Bundle arguments) {
         // Teardown from previous arguments
         if (mCursor != null) {
+        	// TODO: THIS IS WHAT WE NEED TO INSPECT FOR THE ARGUMENT BEING PASSED IN,
+        	// I THINK, but maybe is the Session Adapter because thats whats used to build the query.
             getActivity().stopManagingCursor(mCursor);
             mCursor = null;
         }
@@ -267,6 +268,7 @@ public class SessionsFragment extends ListFragment implements
             // Format time block this session occupies
             final long blockStart = cursor.getLong(SessionsQuery.BLOCK_START);
             final long blockEnd = cursor.getLong(SessionsQuery.BLOCK_END);
+            final String trackTitle = cursor.getString(SessionsQuery.BLOCK_END);
             final String roomName = cursor.getString(SessionsQuery.ROOM_NAME);
             final String subtitle = formatSessionSubtitle(blockStart, blockEnd, roomName, context);
 

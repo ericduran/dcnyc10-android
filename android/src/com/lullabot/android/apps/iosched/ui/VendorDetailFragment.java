@@ -16,16 +16,6 @@
 
 package com.lullabot.android.apps.iosched.ui;
 
-import com.lullabot.android.apps.iosched.R;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract;
-import com.lullabot.android.apps.iosched.util.ActivityHelper;
-import com.lullabot.android.apps.iosched.util.AnalyticsUtils;
-import com.lullabot.android.apps.iosched.util.BitmapUtils;
-import com.lullabot.android.apps.iosched.util.FractionalTouchDelegate;
-import com.lullabot.android.apps.iosched.util.NotifyingAsyncQueryHandler;
-import com.lullabot.android.apps.iosched.util.ParserUtils;
-import com.lullabot.android.apps.iosched.util.UIUtils;
-
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -44,6 +34,16 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.lullabot.android.apps.iosched.R;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract;
+import com.lullabot.android.apps.iosched.util.ActivityHelper;
+import com.lullabot.android.apps.iosched.util.AnalyticsUtils;
+import com.lullabot.android.apps.iosched.util.BitmapUtils;
+import com.lullabot.android.apps.iosched.util.FractionalTouchDelegate;
+import com.lullabot.android.apps.iosched.util.NotifyingAsyncQueryHandler;
+import com.lullabot.android.apps.iosched.util.ParserUtils;
+import com.lullabot.android.apps.iosched.util.UIUtils;
 
 /**
  * A fragment that shows detail information for a sandbox company, including company name,

@@ -16,7 +16,7 @@
 
 package com.lullabot.android.apps.iosched.provider;
 
-import com.lullabot.android.apps.iosched.util.ParserUtils;
+import java.util.List;
 
 import android.app.SearchManager;
 import android.graphics.Color;
@@ -24,7 +24,7 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 import android.text.format.DateUtils;
 
-import java.util.List;
+import com.lullabot.android.apps.iosched.util.ParserUtils;
 
 /**
  * Contract class for interacting with {@link ScheduleProvider}. Unless

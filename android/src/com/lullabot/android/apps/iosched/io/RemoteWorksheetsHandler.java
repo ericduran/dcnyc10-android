@@ -16,14 +16,13 @@
 
 package com.lullabot.android.apps.iosched.io;
 
-import com.lullabot.android.apps.iosched.provider.ScheduleContract;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Sessions;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Speakers;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Vendors;
-import com.lullabot.android.apps.iosched.util.Lists;
-import com.lullabot.android.apps.iosched.util.Maps;
-import com.lullabot.android.apps.iosched.util.ParserUtils;
-import com.lullabot.android.apps.iosched.util.WorksheetEntry;
+import static com.lullabot.android.apps.iosched.util.ParserUtils.AtomTags.ENTRY;
+import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
+import static org.xmlpull.v1.XmlPullParser.START_TAG;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.http.client.methods.HttpGet;
 import org.xmlpull.v1.XmlPullParser;
@@ -34,13 +33,14 @@ import android.content.ContentResolver;
 import android.net.Uri;
 import android.util.Log;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import static com.lullabot.android.apps.iosched.util.ParserUtils.AtomTags.ENTRY;
-import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
-import static org.xmlpull.v1.XmlPullParser.START_TAG;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Sessions;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Speakers;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Vendors;
+import com.lullabot.android.apps.iosched.util.Lists;
+import com.lullabot.android.apps.iosched.util.Maps;
+import com.lullabot.android.apps.iosched.util.ParserUtils;
+import com.lullabot.android.apps.iosched.util.WorksheetEntry;
 
 public class RemoteWorksheetsHandler extends XmlHandler {
     private static final String TAG = "WorksheetsHandler";

@@ -14,22 +14,29 @@
   limitations under the License.
   -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+android:id/trackRelLayout"
+    android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+    style="@style/SimpleListItem">
+<RelativeLayout
     android:layout_width="fill_parent"
     android:layout_height="?android:attr/listPreferredItemHeight"
+    android:background="@drawable/bg_session_row"
     style="@style/SimpleListItem">
-
-    <com.lullabot.android.apps.iosched.ui.widget.BezelImageView android:id="@android:id/icon1"
-        android:layout_alignParentRight="true"
+    <ImageView android:id="@+android:id/icon1"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="10dp"
+        android:visibility="gone"
         android:layout_margin="@dimen/track_icon_padding"
         android:layout_width="@dimen/track_icon_width"
-        android:layout_height="fill_parent" />
-
+        android:layout_height="fill_parent"
+        android:src="@drawable/icn_sub_sessions" />
     <TextView android:id="@android:id/text1"
         style="@android:style/TextAppearance.Large"
         android:layout_width="fill_parent"
+        android:paddingLeft="10dp"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@android:id/icon1" />
-
+        android:layout_toRightOf="@android:id/icon2" />
+</RelativeLayout>
 </RelativeLayout>

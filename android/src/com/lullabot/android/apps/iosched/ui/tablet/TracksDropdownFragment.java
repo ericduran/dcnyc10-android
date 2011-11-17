@@ -16,15 +16,6 @@
 
 package com.lullabot.android.apps.iosched.ui.tablet;
 
-import com.lullabot.android.apps.iosched.R;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract;
-import com.lullabot.android.apps.iosched.ui.BaseActivity;
-import com.lullabot.android.apps.iosched.ui.SessionDetailFragment;
-import com.lullabot.android.apps.iosched.ui.TracksAdapter;
-import com.lullabot.android.apps.iosched.ui.TracksFragment;
-import com.lullabot.android.apps.iosched.util.NotifyingAsyncQueryHandler;
-import com.lullabot.android.apps.iosched.util.UIUtils;
-
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -38,6 +29,15 @@ import android.widget.AdapterView;
 import android.widget.ListPopupWindow;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+
+import com.lullabot.android.apps.iosched.R;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract;
+import com.lullabot.android.apps.iosched.ui.BaseActivity;
+import com.lullabot.android.apps.iosched.ui.SessionDetailFragment;
+import com.lullabot.android.apps.iosched.ui.TracksAdapter;
+import com.lullabot.android.apps.iosched.ui.TracksFragment;
+import com.lullabot.android.apps.iosched.util.NotifyingAsyncQueryHandler;
+import com.lullabot.android.apps.iosched.util.UIUtils;
 
 /**
  * A tablet-specific fragment that is a giant {@link android.widget.Spinner}-like widget. It shows

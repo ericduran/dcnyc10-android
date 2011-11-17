@@ -16,6 +16,13 @@
 
 package com.lullabot.android.apps.iosched.provider;
 
+import android.app.SearchManager;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.BaseColumns;
+import android.util.Log;
+
 import com.lullabot.android.apps.iosched.provider.ScheduleContract.Blocks;
 import com.lullabot.android.apps.iosched.provider.ScheduleContract.BlocksColumns;
 import com.lullabot.android.apps.iosched.provider.ScheduleContract.Rooms;
@@ -29,13 +36,6 @@ import com.lullabot.android.apps.iosched.provider.ScheduleContract.Tracks;
 import com.lullabot.android.apps.iosched.provider.ScheduleContract.TracksColumns;
 import com.lullabot.android.apps.iosched.provider.ScheduleContract.Vendors;
 import com.lullabot.android.apps.iosched.provider.ScheduleContract.VendorsColumns;
-
-import android.app.SearchManager;
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.BaseColumns;
-import android.util.Log;
 
 /**
  * Helper for managing {@link SQLiteDatabase} that stores data for

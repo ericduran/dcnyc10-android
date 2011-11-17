@@ -124,7 +124,7 @@ public class DashboardLayout extends ViewGroup {
         int rows;
 
         while (true) {
-            rows = (visibleCount - 1) / cols + 1;
+            rows = (visibleCount) / cols + 1;
 
             hSpace = ((width - mMaxChildWidth * cols) / (cols + 1));
             vSpace = ((height - mMaxChildHeight * rows) / (rows + 1));

@@ -16,11 +16,14 @@
 
 package com.lullabot.android.apps.iosched.io;
 
-import com.lullabot.android.apps.iosched.provider.ScheduleContract;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Speakers;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.SyncColumns;
-import com.lullabot.android.apps.iosched.util.Lists;
-import com.lullabot.android.apps.iosched.util.SpreadsheetEntry;
+import static com.lullabot.android.apps.iosched.util.ParserUtils.queryItemUpdated;
+import static com.lullabot.android.apps.iosched.util.ParserUtils.sanitizeId;
+import static com.lullabot.android.apps.iosched.util.ParserUtils.AtomTags.ENTRY;
+import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
+import static org.xmlpull.v1.XmlPullParser.START_TAG;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -30,14 +33,11 @@ import android.content.ContentResolver;
 import android.net.Uri;
 import android.util.Log;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
-import static com.lullabot.android.apps.iosched.util.ParserUtils.queryItemUpdated;
-import static com.lullabot.android.apps.iosched.util.ParserUtils.sanitizeId;
-import static com.lullabot.android.apps.iosched.util.ParserUtils.AtomTags.ENTRY;
-import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
-import static org.xmlpull.v1.XmlPullParser.START_TAG;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Speakers;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.SyncColumns;
+import com.lullabot.android.apps.iosched.util.Lists;
+import com.lullabot.android.apps.iosched.util.SpreadsheetEntry;
 
 /**
  * Handle a remote {@link XmlPullParser} that defines a set of {@link Speakers}

@@ -18,6 +18,9 @@ package com.lullabot.android.apps.iosched.io;
 
 
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -26,9 +29,6 @@ import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
 import android.content.OperationApplicationException;
 import android.os.RemoteException;
-
-import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Abstract class that handles reading and parsing an {@link XmlPullParser} into

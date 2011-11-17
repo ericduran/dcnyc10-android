@@ -16,19 +16,9 @@
 
 package com.lullabot.android.apps.iosched.service;
 
-import com.lullabot.android.apps.iosched.R;
-import com.lullabot.android.apps.iosched.io.LocalBlocksHandler;
-import com.lullabot.android.apps.iosched.io.LocalExecutor;
-import com.lullabot.android.apps.iosched.io.LocalRoomsHandler;
-import com.lullabot.android.apps.iosched.io.LocalSearchSuggestHandler;
-import com.lullabot.android.apps.iosched.io.LocalSessionsHandler;
-import com.lullabot.android.apps.iosched.io.LocalTracksHandler;
-import com.lullabot.android.apps.iosched.io.RemoteExecutor;
-import com.lullabot.android.apps.iosched.io.RemoteSessionsHandler;
-import com.lullabot.android.apps.iosched.io.RemoteSpeakersHandler;
-import com.lullabot.android.apps.iosched.io.RemoteVendorsHandler;
-import com.lullabot.android.apps.iosched.io.RemoteWorksheetsHandler;
-import com.lullabot.android.apps.iosched.provider.ScheduleProvider;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.zip.GZIPInputStream;
 
 import org.apache.http.Header;
 import org.apache.http.HeaderElement;
@@ -61,9 +51,19 @@ import android.os.ResultReceiver;
 import android.text.format.DateUtils;
 import android.util.Log;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.zip.GZIPInputStream;
+import com.lullabot.android.apps.iosched.R;
+import com.lullabot.android.apps.iosched.io.LocalBlocksHandler;
+import com.lullabot.android.apps.iosched.io.LocalExecutor;
+import com.lullabot.android.apps.iosched.io.LocalRoomsHandler;
+import com.lullabot.android.apps.iosched.io.LocalSearchSuggestHandler;
+import com.lullabot.android.apps.iosched.io.LocalSessionsHandler;
+import com.lullabot.android.apps.iosched.io.LocalTracksHandler;
+import com.lullabot.android.apps.iosched.io.RemoteExecutor;
+import com.lullabot.android.apps.iosched.io.RemoteSessionsHandler;
+import com.lullabot.android.apps.iosched.io.RemoteSpeakersHandler;
+import com.lullabot.android.apps.iosched.io.RemoteVendorsHandler;
+import com.lullabot.android.apps.iosched.io.RemoteWorksheetsHandler;
+import com.lullabot.android.apps.iosched.provider.ScheduleProvider;
 
 /**
  * Background {@link Service} that synchronizes data living in
@@ -85,7 +85,7 @@ public class SyncService extends IntentService {
 
     /** Root worksheet feed for online data source */
     // TODO: insert your sessions/speakers/vendors spreadsheet doc URL here.
-    private static final String WORKSHEETS_URL = "http://spreadsheets.google.com/feeds/worksheets/0AqaZFq5sjVerdElhWVBCTkxWV1VtMldSQWplSkpIN3c/public/basic";
+    private static final String WORKSHEETS_URL = "https://spreadsheets.google.com/feeds/worksheets/0AqaZFq5sjVerdElhWVBCTkxWV1VtMldSQWplSkpIN3c/public/basic";
 
     private static final String HEADER_ACCEPT_ENCODING = "Accept-Encoding";
     private static final String ENCODING_GZIP = "gzip";

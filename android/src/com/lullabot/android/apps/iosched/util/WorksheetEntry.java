@@ -16,13 +16,6 @@
 
 package com.lullabot.android.apps.iosched.util;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
-import android.text.format.DateUtils;
-
-import java.io.IOException;
-
 import static com.lullabot.android.apps.iosched.util.ParserUtils.AtomTags.HREF;
 import static com.lullabot.android.apps.iosched.util.ParserUtils.AtomTags.LINK;
 import static com.lullabot.android.apps.iosched.util.ParserUtils.AtomTags.REL;
@@ -32,6 +25,13 @@ import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
 import static org.xmlpull.v1.XmlPullParser.END_TAG;
 import static org.xmlpull.v1.XmlPullParser.START_TAG;
 import static org.xmlpull.v1.XmlPullParser.TEXT;
+
+import java.io.IOException;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
+import android.text.format.DateUtils;
 
 public class WorksheetEntry {
     private static final String REL_LISTFEED = "http://schemas.google.com/spreadsheets/2006#listfeed";

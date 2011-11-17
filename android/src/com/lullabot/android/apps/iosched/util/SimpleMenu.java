@@ -16,6 +16,8 @@
 
 package com.lullabot.android.apps.iosched.util;
 
+import java.util.ArrayList;
+
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -24,8 +26,6 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
-
-import java.util.ArrayList;
 
 /**
  * A <em>really</em> dumb implementation of the {@link Menu} interface, that's only useful for our

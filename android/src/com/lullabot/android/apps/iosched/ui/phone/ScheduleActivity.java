@@ -16,11 +16,11 @@
 
 package com.lullabot.android.apps.iosched.ui.phone;
 
-import com.lullabot.android.apps.iosched.ui.BaseSinglePaneActivity;
-import com.lullabot.android.apps.iosched.ui.ScheduleFragment;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+
+import com.lullabot.android.apps.iosched.ui.BaseSinglePaneActivity;
+import com.lullabot.android.apps.iosched.ui.ScheduleFragment;
 
 public class ScheduleActivity extends BaseSinglePaneActivity {
     @Override

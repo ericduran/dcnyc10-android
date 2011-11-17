@@ -16,14 +16,17 @@
 
 package com.lullabot.android.apps.iosched.io;
 
-import com.lullabot.android.apps.iosched.provider.ScheduleContract;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Sessions;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.SyncColumns;
-import com.lullabot.android.apps.iosched.provider.ScheduleDatabase.SessionsSpeakers;
-import com.lullabot.android.apps.iosched.provider.ScheduleDatabase.SessionsTracks;
-import com.lullabot.android.apps.iosched.util.Lists;
-import com.lullabot.android.apps.iosched.util.ParserUtils;
-import com.lullabot.android.apps.iosched.util.SpreadsheetEntry;
+import static com.lullabot.android.apps.iosched.util.ParserUtils.sanitizeId;
+import static com.lullabot.android.apps.iosched.util.ParserUtils.splitComma;
+import static com.lullabot.android.apps.iosched.util.ParserUtils.translateTrackIdAlias;
+import static com.lullabot.android.apps.iosched.util.ParserUtils.AtomTags.ENTRY;
+import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
+import static org.xmlpull.v1.XmlPullParser.START_TAG;
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Locale;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -36,17 +39,14 @@ import android.net.Uri;
 import android.text.format.Time;
 import android.util.Log;
 
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Locale;
-
-import static com.lullabot.android.apps.iosched.util.ParserUtils.sanitizeId;
-import static com.lullabot.android.apps.iosched.util.ParserUtils.splitComma;
-import static com.lullabot.android.apps.iosched.util.ParserUtils.translateTrackIdAlias;
-import static com.lullabot.android.apps.iosched.util.ParserUtils.AtomTags.ENTRY;
-import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
-import static org.xmlpull.v1.XmlPullParser.START_TAG;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Sessions;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.SyncColumns;
+import com.lullabot.android.apps.iosched.provider.ScheduleDatabase.SessionsSpeakers;
+import com.lullabot.android.apps.iosched.provider.ScheduleDatabase.SessionsTracks;
+import com.lullabot.android.apps.iosched.util.Lists;
+import com.lullabot.android.apps.iosched.util.ParserUtils;
+import com.lullabot.android.apps.iosched.util.SpreadsheetEntry;
 
 /**
  * Handle a remote {@link XmlPullParser} that defines a set of {@link Sessions}
@@ -190,7 +190,7 @@ public class RemoteSessionsHandler extends XmlHandler {
      */
     private static long parseTime(String date, String time) throws HandlerException {
     	// Changed to Eastern.
-        final String composed = String.format("%s 2011 %s -0400", date, time);
+        final String composed = String.format("%s 2011 %s -0500", date, time);
         try {
             return sTimeFormat.parse(composed).getTime();
         } catch (java.text.ParseException e) {

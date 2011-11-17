@@ -16,6 +16,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/bg_repeat_light_long"
     android:fillViewport="true">
 
     <LinearLayout android:orientation="vertical"
@@ -28,13 +29,6 @@
             android:layout_height="wrap_content"
             style="@style/TextBody" />
 
-        <Button
-            style="@style/PushButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/session_tags_button"
-            android:layout_marginTop="@dimen/body_padding_medium" />
-
         <LinearLayout android:id="@+id/session_speakers_block"
             android:orientation="vertical"
             android:layout_width="fill_parent"
@@ -45,22 +39,6 @@
                 android:text="@string/session_speakers"
                 style="@style/TextHeader2" />
         </LinearLayout>
-
-        <LinearLayout android:id="@+id/session_requirements_block"
-            android:orientation="vertical"
-            android:layout_marginTop="@dimen/body_padding_medium"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-            <TextView android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/session_requirements"
-                style="@style/TextHeader2" />
-            <TextView android:id="@+id/session_requirements"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                style="@style/TextBody" />
-        </LinearLayout>
-
         <TextView android:id="@android:id/empty"
             style="@android:style/TextAppearance.Medium"
             android:layout_width="fill_parent"

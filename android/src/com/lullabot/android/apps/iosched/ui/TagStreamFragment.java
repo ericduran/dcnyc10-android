@@ -16,23 +16,19 @@
 
 package com.lullabot.android.apps.iosched.ui;
 
-import com.lullabot.android.apps.iosched.R;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import com.lullabot.android.apps.iosched.R;
 
 /**
  * A {@link WebView}-based fragment that shows Google Realtime Search results for a given query,
@@ -45,7 +41,7 @@ public class TagStreamFragment extends Fragment {
 
     public static final String EXTRA_QUERY = "com.google.android.iosched.extra.QUERY";
 
-    public static final String CONFERENCE_HASHTAG = "#diwd2011";
+    public static final String CONFERENCE_HASHTAG = "#dcnyc10";
 
     private String mSearchString;
     private WebView mWebView;
@@ -83,8 +79,8 @@ public class TagStreamFragment extends Fragment {
         mWebView.post(new Runnable() {
             public void run() {
                 mWebView.getSettings().setJavaScriptEnabled(true);
-                mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(false);
-                    mWebView.loadUrl("http://www.google.com/events/io/2011/mobile_announcements.html");
+                mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+                mWebView.loadUrl("http://mobile.twitter.com/search");
             }
         });
 

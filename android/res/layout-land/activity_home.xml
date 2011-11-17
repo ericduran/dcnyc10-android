@@ -27,8 +27,8 @@
         android:layout_weight="1" />
 
     <include layout="@layout/fragment_lullabot_credit"
-    	android:layout_gravity="center|right"
-    />
+        android:layout_gravity="center_vertical|center_horizontal|center"
+        android:layout_height="wrap_content"/>
 
 
 </LinearLayout>

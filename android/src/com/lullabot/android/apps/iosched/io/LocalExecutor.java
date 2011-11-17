@@ -19,8 +19,8 @@ package com.lullabot.android.apps.iosched.io;
 
 
 
-import com.lullabot.android.apps.iosched.io.XmlHandler.HandlerException;
-import com.lullabot.android.apps.iosched.util.ParserUtils;
+import java.io.IOException;
+import java.io.InputStream;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -30,8 +30,8 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 
-import java.io.IOException;
-import java.io.InputStream;
+import com.lullabot.android.apps.iosched.io.XmlHandler.HandlerException;
+import com.lullabot.android.apps.iosched.util.ParserUtils;
 
 /**
  * Opens a local {@link Resources#getXml(int)} and passes the resulting

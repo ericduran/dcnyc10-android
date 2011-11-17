@@ -16,8 +16,7 @@
 
 package com.lullabot.android.apps.iosched.ui;
 
-import com.lullabot.android.apps.iosched.R;
-import com.lullabot.android.apps.iosched.util.AnalyticsUtils;
+import java.util.regex.Pattern;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -33,7 +32,8 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import java.util.regex.Pattern;
+import com.lullabot.android.apps.iosched.R;
+import com.lullabot.android.apps.iosched.util.AnalyticsUtils;
 
 /**
  * A fragment containing a {@link WebView} pointing to the I/O announcements URL.

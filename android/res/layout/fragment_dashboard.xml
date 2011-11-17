@@ -1,45 +1,26 @@
-<!--
-  Copyright 2011 Google Inc.
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
-  -->
 <com.lullabot.android.apps.iosched.ui.widget.DashboardLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-
-    <Button android:id="@+id/home_btn_sessions"
-        style="@style/DashboardButton"
-        android:text="@string/btn_sessions"
-        android:drawableTop="@drawable/home_btn_sessions" />
-    <Button android:id="@+id/home_btn_speakers"
-        style="@style/DashboardButton"
-        android:text="@string/btn_speakers"
-        android:drawableTop="@drawable/home_btn_speakers" />
+    <Button
+    style="@style/DashboardButton" android:id="@+id/home_btn_schedule" android:drawableTop="@drawable/home_btn_schedule"></Button>
+    <Button style="@style/DashboardButton" android:id="@+id/home_btn_sessions" android:drawableTop="@drawable/home_btn_sessions"></Button>
     <Button android:id="@+id/home_btn_map"
         style="@style/DashboardButton"
-        android:text="@string/btn_map"
         android:drawableTop="@drawable/home_btn_map" />
-    <Button android:id="@+id/home_btn_schedule"
+    <Button android:id="@+id/home_btn_tweets"
         style="@style/DashboardButton"
-        android:text="@string/btn_schedule"
-        android:drawableTop="@drawable/home_btn_schedule" />
+        android:drawableTop="@drawable/home_btn_tweets" />
     <Button android:id="@+id/home_btn_sponsors"
         style="@style/DashboardButton"
-        android:text="@string/btn_sponsors"
         android:drawableTop="@drawable/home_btn_sponsors" />
+    <Button android:id="@+id/home_btn_news"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/home_btn_news" />
+    <Button android:id="@+id/home_btn_starred"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/home_btn_starred" />
     <Button android:id="@+id/home_btn_info"
         style="@style/DashboardButton"
-        android:text="@string/btn_info"
         android:drawableTop="@drawable/home_btn_info" />
 </com.lullabot.android.apps.iosched.ui.widget.DashboardLayout>

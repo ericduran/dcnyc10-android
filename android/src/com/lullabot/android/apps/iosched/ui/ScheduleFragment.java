@@ -16,18 +16,10 @@
 
 package com.lullabot.android.apps.iosched.ui;
 
-import com.lullabot.android.apps.iosched.R;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract;
-import com.lullabot.android.apps.iosched.ui.widget.BlockView;
-import com.lullabot.android.apps.iosched.ui.widget.BlocksLayout;
-import com.lullabot.android.apps.iosched.ui.widget.ObservableScrollView;
-import com.lullabot.android.apps.iosched.ui.widget.Workspace;
-import com.lullabot.android.apps.iosched.util.AnalyticsUtils;
-import com.lullabot.android.apps.iosched.util.Maps;
-import com.lullabot.android.apps.iosched.util.MotionEventUtils;
-import com.lullabot.android.apps.iosched.util.NotifyingAsyncQueryHandler;
-import com.lullabot.android.apps.iosched.util.ParserUtils;
-import com.lullabot.android.apps.iosched.util.UIUtils;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.TimeZone;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -54,10 +46,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.TimeZone;
+import com.lullabot.android.apps.iosched.R;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract;
+import com.lullabot.android.apps.iosched.ui.widget.BlockView;
+import com.lullabot.android.apps.iosched.ui.widget.BlocksLayout;
+import com.lullabot.android.apps.iosched.ui.widget.ObservableScrollView;
+import com.lullabot.android.apps.iosched.ui.widget.Workspace;
+import com.lullabot.android.apps.iosched.util.AnalyticsUtils;
+import com.lullabot.android.apps.iosched.util.Maps;
+import com.lullabot.android.apps.iosched.util.MotionEventUtils;
+import com.lullabot.android.apps.iosched.util.NotifyingAsyncQueryHandler;
+import com.lullabot.android.apps.iosched.util.ParserUtils;
+import com.lullabot.android.apps.iosched.util.UIUtils;
 
 /**
  * Shows a horizontally-pageable calendar of conference days. Horizontaly paging is achieved using
@@ -79,11 +79,9 @@ public class ScheduleFragment extends Fragment implements
             | DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_ABBREV_WEEKDAY;
 
     /**
-     *  Adding the DIWD Dates. 10/12/11 to 10/14/11.
+     *  Adding the DCNYC Dates. 12/10/11.
      */
-    private static final long WED_START = ParserUtils.parseTime("2011-10-12T00:00:00.000-04:00");
-    private static final long THR_START = ParserUtils.parseTime("2011-10-13T00:00:00.000-04:00");
-    private static final long FRI_START = ParserUtils.parseTime("2011-10-14T00:00:00.000-04:00");
+    private static final long SAT_START = ParserUtils.parseTime("2011-12-10T00:08:00.000-05:00");
 
     private static final int DISABLED_BLOCK_ALPHA = 100;
 
@@ -179,9 +177,7 @@ public class ScheduleFragment extends Fragment implements
             }
         });
 
-        setupDay(inflater, WED_START);
-        setupDay(inflater, THR_START);
-        setupDay(inflater, FRI_START);
+        setupDay(inflater, SAT_START);
 
         updateWorkspaceHeader(0);
         mWorkspace.setOnScrollListener(new Workspace.OnScrollListener() {

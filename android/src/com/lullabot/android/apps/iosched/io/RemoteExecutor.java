@@ -16,8 +16,8 @@
 
 package com.lullabot.android.apps.iosched.io;
 
-import com.lullabot.android.apps.iosched.io.XmlHandler.HandlerException;
-import com.lullabot.android.apps.iosched.util.ParserUtils;
+import java.io.IOException;
+import java.io.InputStream;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -29,8 +29,8 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import android.content.ContentResolver;
 
-import java.io.IOException;
-import java.io.InputStream;
+import com.lullabot.android.apps.iosched.io.XmlHandler.HandlerException;
+import com.lullabot.android.apps.iosched.util.ParserUtils;
 
 /**
  * Executes an {@link HttpUriRequest} and passes the result as an

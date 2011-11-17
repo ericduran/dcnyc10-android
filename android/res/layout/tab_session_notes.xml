@@ -20,6 +20,7 @@
 
     <LinearLayout android:orientation="vertical"
         android:layout_width="fill_parent"
+        android:background="@drawable/bg_repeat_light_long"
         android:layout_height="fill_parent">
 
         <RelativeLayout android:id="@+id/notes_catch_market_link"

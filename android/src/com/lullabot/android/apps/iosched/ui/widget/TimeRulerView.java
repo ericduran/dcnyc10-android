@@ -16,9 +16,6 @@
 
 package com.lullabot.android.apps.iosched.ui.widget;
 
-import com.lullabot.android.apps.iosched.R;
-import com.lullabot.android.apps.iosched.util.UIUtils;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -30,6 +27,9 @@ import android.graphics.Typeface;
 import android.text.format.Time;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.lullabot.android.apps.iosched.R;
+import com.lullabot.android.apps.iosched.util.UIUtils;
 
 /**
  * Custom view that draws a vertical time "ruler" representing the chronological

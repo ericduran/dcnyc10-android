@@ -16,6 +16,13 @@
 
 package com.lullabot.android.apps.iosched.ui.tablet;
 
+import android.app.FragmentBreadCrumbs;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+
 import com.lullabot.android.apps.iosched.R;
 import com.lullabot.android.apps.iosched.ui.BaseMultiPaneActivity;
 import com.lullabot.android.apps.iosched.ui.MapFragment;
@@ -27,13 +34,6 @@ import com.lullabot.android.apps.iosched.ui.phone.SessionDetailActivity;
 import com.lullabot.android.apps.iosched.ui.phone.SessionsActivity;
 import com.lullabot.android.apps.iosched.ui.phone.VendorDetailActivity;
 import com.lullabot.android.apps.iosched.ui.phone.VendorsActivity;
-
-import android.app.FragmentBreadCrumbs;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 
 /**
  * A multi-pane activity, where the primary navigation pane is a {@link MapFragment}, that shows
@@ -169,7 +169,6 @@ public class MapMultiPaneActivity extends BaseMultiPaneActivity implements
         View detailPopup = findViewById(R.id.map_detail_popup);
         if (show != (detailPopup.getVisibility() == View.VISIBLE)) {
             detailPopup.setVisibility(show ? View.VISIBLE : View.GONE);
-            mMapFragment.panLeft(show ? 0.25f : -0.25f);
         }
     }
 

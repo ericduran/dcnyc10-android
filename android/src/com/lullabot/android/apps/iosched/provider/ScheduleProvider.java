@@ -16,20 +16,10 @@
 
 package com.lullabot.android.apps.iosched.provider;
 
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Blocks;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Rooms;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.SearchSuggest;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Sessions;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Speakers;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Tracks;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Vendors;
-import com.lullabot.android.apps.iosched.provider.ScheduleDatabase.SessionsSearchColumns;
-import com.lullabot.android.apps.iosched.provider.ScheduleDatabase.SessionsSpeakers;
-import com.lullabot.android.apps.iosched.provider.ScheduleDatabase.SessionsTracks;
-import com.lullabot.android.apps.iosched.provider.ScheduleDatabase.Tables;
-import com.lullabot.android.apps.iosched.provider.ScheduleDatabase.VendorsSearchColumns;
-import com.lullabot.android.apps.iosched.service.SyncService;
-import com.lullabot.android.apps.iosched.util.SelectionBuilder;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import android.app.Activity;
 import android.app.SearchManager;
@@ -47,10 +37,20 @@ import android.os.ParcelFileDescriptor;
 import android.provider.BaseColumns;
 import android.util.Log;
 
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Blocks;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Rooms;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.SearchSuggest;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Sessions;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Speakers;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Tracks;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Vendors;
+import com.lullabot.android.apps.iosched.provider.ScheduleDatabase.SessionsSearchColumns;
+import com.lullabot.android.apps.iosched.provider.ScheduleDatabase.SessionsSpeakers;
+import com.lullabot.android.apps.iosched.provider.ScheduleDatabase.SessionsTracks;
+import com.lullabot.android.apps.iosched.provider.ScheduleDatabase.Tables;
+import com.lullabot.android.apps.iosched.provider.ScheduleDatabase.VendorsSearchColumns;
+import com.lullabot.android.apps.iosched.service.SyncService;
+import com.lullabot.android.apps.iosched.util.SelectionBuilder;
 
 /**
  * Provider that stores {@link ScheduleContract} data. Data is usually inserted

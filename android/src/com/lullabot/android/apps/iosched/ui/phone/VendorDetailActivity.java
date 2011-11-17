@@ -16,11 +16,11 @@
 
 package com.lullabot.android.apps.iosched.ui.phone;
 
-import com.lullabot.android.apps.iosched.ui.BaseSinglePaneActivity;
-import com.lullabot.android.apps.iosched.ui.VendorDetailFragment;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+
+import com.lullabot.android.apps.iosched.ui.BaseSinglePaneActivity;
+import com.lullabot.android.apps.iosched.ui.VendorDetailFragment;
 
 public class VendorDetailActivity extends BaseSinglePaneActivity {
     @Override

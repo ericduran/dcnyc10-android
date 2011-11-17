@@ -16,11 +16,10 @@
 
 package com.lullabot.android.apps.iosched.util;
 
-import com.lullabot.android.apps.iosched.io.XmlHandler;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Blocks;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.SyncColumns;
-import com.lullabot.android.apps.iosched.provider.ScheduleContract.Tracks;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Set;
+import java.util.regex.Pattern;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -33,10 +32,11 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.text.format.Time;
 
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Set;
-import java.util.regex.Pattern;
+import com.lullabot.android.apps.iosched.io.XmlHandler;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Blocks;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.SyncColumns;
+import com.lullabot.android.apps.iosched.provider.ScheduleContract.Tracks;
 
 /**
  * Various utility methods used by {@link XmlHandler} implementations.

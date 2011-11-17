@@ -23,8 +23,7 @@
 
 package com.lullabot.android.apps.iosched.ui.widget;
 
-import com.lullabot.android.apps.iosched.util.MotionEventUtils;
-import com.lullabot.android.apps.iosched.util.ReflectionUtils;
+import java.util.ArrayList;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -42,7 +41,8 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.Scroller;
 
-import java.util.ArrayList;
+import com.lullabot.android.apps.iosched.util.MotionEventUtils;
+import com.lullabot.android.apps.iosched.util.ReflectionUtils;
 
 /**
  * A {@link android.view.ViewGroup} that shows one child at a time, allowing the user to swipe
