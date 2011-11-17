@@ -261,9 +261,11 @@ public class SessionsFragment extends ListFragment implements
         @Override
         public void bindView(View view, Context context, Cursor cursor) {
             final TextView titleView = (TextView) view.findViewById(R.id.session_title);
+            final TextView otherView = (TextView) view.findViewById(R.id.session_with);
             final TextView subtitleView = (TextView) view.findViewById(R.id.session_subtitle);
 
             titleView.setText(cursor.getString(SessionsQuery.TITLE));
+            otherView.setText("with " + cursor.getString(SessionsQuery.REQUIREMENTS));
 
             // Format time block this session occupies
             final long blockStart = cursor.getLong(SessionsQuery.BLOCK_START);
@@ -355,6 +357,7 @@ public class SessionsFragment extends ListFragment implements
                 ScheduleContract.Blocks.BLOCK_START,
                 ScheduleContract.Blocks.BLOCK_END,
                 ScheduleContract.Rooms.ROOM_NAME,
+                ScheduleContract.Sessions.SESSION_REQUIREMENTS,
         };
 
         int _ID = 0;
@@ -364,6 +367,7 @@ public class SessionsFragment extends ListFragment implements
         int BLOCK_START = 4;
         int BLOCK_END = 5;
         int ROOM_NAME = 6;
+        int REQUIREMENTS = 7;
     }
 
     /**

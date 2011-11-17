@@ -51,6 +51,13 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             style="@style/SessionSubText" />
+                 <TextView android:id="@+id/session_with"
+            android:layout_below="@id/session_subtitle"
+            android:layout_width="fill_parent"
+            android:textColor="#cc3333"
+            android:layout_height="wrap_content"
+            style="@style/TextHeaderSub" />
+        
         <ImageView android:layout_height="wrap_content" 
         android:src="@drawable/bg_listing_arrow" 
         android:id="@+id/session_listing_arrow" 
