@@ -262,15 +262,15 @@ public class SessionsFragment extends ListFragment implements
         public void bindView(View view, Context context, Cursor cursor) {
             final TextView titleView = (TextView) view.findViewById(R.id.session_title);
             final TextView otherView = (TextView) view.findViewById(R.id.session_with);
+            final TextView keywordView = (TextView) view.findViewById(R.id.session_keyword);
             final TextView subtitleView = (TextView) view.findViewById(R.id.session_subtitle);
 
             titleView.setText(cursor.getString(SessionsQuery.TITLE));
             otherView.setText("with " + cursor.getString(SessionsQuery.REQUIREMENTS));
-
+            keywordView.setText(cursor.getString(SessionsQuery.KEYWORDS));
             // Format time block this session occupies
             final long blockStart = cursor.getLong(SessionsQuery.BLOCK_START);
             final long blockEnd = cursor.getLong(SessionsQuery.BLOCK_END);
-            final String trackTitle = cursor.getString(SessionsQuery.BLOCK_END);
             final String roomName = cursor.getString(SessionsQuery.ROOM_NAME);
             final String subtitle = formatSessionSubtitle(blockStart, blockEnd, roomName, context);
 
@@ -358,6 +358,7 @@ public class SessionsFragment extends ListFragment implements
                 ScheduleContract.Blocks.BLOCK_END,
                 ScheduleContract.Rooms.ROOM_NAME,
                 ScheduleContract.Sessions.SESSION_REQUIREMENTS,
+                ScheduleContract.Sessions.SESSION_KEYWORDS,
         };
 
         int _ID = 0;
@@ -368,6 +369,7 @@ public class SessionsFragment extends ListFragment implements
         int BLOCK_END = 5;
         int ROOM_NAME = 6;
         int REQUIREMENTS = 7;
+        int KEYWORDS = 8; 
     }
 
     /**
