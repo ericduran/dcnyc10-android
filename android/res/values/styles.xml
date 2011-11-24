@@ -125,15 +125,14 @@
     <style name="SimpleListItem" parent="style/ListItemContainerBase">
     </style>
 
+    <style name="ListItemContainer" parent="style/ListItemContainerBase">
+      <item name="android:paddingBottom">0dp</item>
+    </style>
+
     <!-- used for more complex list items, e.g. those with stars aligned to the top-right -->
-
-    <style name="ListItemContainer" parent="style/ListItemContainerBase" />
-
     <style name="ListItemContent">
         <item name="android:paddingLeft">10dp</item>
         <item name="android:paddingRight">10dp</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingBottom">8dp</item>
     </style>
 
     <!-- What's On section in Home activity -->
