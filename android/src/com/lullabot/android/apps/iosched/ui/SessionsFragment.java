@@ -59,6 +59,8 @@ public class SessionsFragment extends ListFragment implements
     private CursorAdapter mAdapter;
     private int mCheckedPosition = -1;
     private boolean mHasSetEmptyText = false;
+    private final static String NON_THIN = "[^iIl1\\.,']";
+
 
     private NotifyingAsyncQueryHandler mHandler;
     private Handler mMessageQueueHandler = new Handler();
@@ -265,7 +267,7 @@ public class SessionsFragment extends ListFragment implements
             final TextView keywordView = (TextView) view.findViewById(R.id.session_keyword);
             final TextView subtitleView = (TextView) view.findViewById(R.id.session_subtitle);
 
-            titleView.setText(cursor.getString(SessionsQuery.TITLE));
+            titleView.setText(ellipsize(cursor.getString(SessionsQuery.TITLE), 45));
             otherView.setText("with " + cursor.getString(SessionsQuery.REQUIREMENTS));
             keywordView.setText(cursor.getString(SessionsQuery.KEYWORDS));
             // Format time block this session occupies
@@ -342,6 +344,38 @@ public class SessionsFragment extends ListFragment implements
             mMessageQueueHandler.postAtTime(mRefreshSessionsRunnable, nextQuarterHour);
         }
     };
+
+	public static String ellipsize(String text, int max) {
+
+        if (textWidth(text) <= max)
+            return text;
+
+        // Start by chopping off at the word before max
+        // This is an over-approximation due to thin-characters...
+        int end = text.lastIndexOf(' ', max - 3);
+
+        // Just one long word. Chop it off.
+        if (end == -1)
+            return text.substring(0, max-3) + "...";
+
+        // Step forward as long as textWidth allows.
+        int newEnd = end;
+        do {
+            end = newEnd;
+            newEnd = text.indexOf(' ', end + 1);
+
+            // No more spaces.
+            if (newEnd == -1)
+                newEnd = text.length();
+
+        } while (textWidth(text.substring(0, newEnd) + "...") < max);
+
+        return text.substring(0, end) + "...";
+    }
+
+    private static int textWidth(String str) {
+        return (int) (str.length() - str.replaceAll(NON_THIN, "").length() / 2);
+    }
 
     /**
      * {@link com.lullabot.android.apps.iosched.provider.ScheduleContract.Sessions} query parameters.

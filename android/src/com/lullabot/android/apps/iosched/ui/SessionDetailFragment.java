@@ -61,7 +61,6 @@ import com.lullabot.android.apps.iosched.util.UIUtils;
 public class SessionDetailFragment extends Fragment implements
         NotifyingAsyncQueryHandler.AsyncQueryListener,
         CompoundButton.OnCheckedChangeListener {
-    private static final String TAG = "SessionDetailFragment";
 
     /**
      * Since sessions can belong tracks, the parent activity can send this extra specifying a
@@ -70,10 +69,7 @@ public class SessionDetailFragment extends Fragment implements
     public static final String EXTRA_TRACK = "com.google.android.iosched.extra.TRACK";
 
     private static final String TAG_SUMMARY = "summary";
-    private static final String TAG_NOTES = "notes";
-    private static final String TAG_LINKS = "links";
 
-    private static StyleSpan sBoldSpan = new StyleSpan(Typeface.BOLD);
 
     private String mSessionId;
     private Uri mSessionUri;
@@ -82,17 +78,13 @@ public class SessionDetailFragment extends Fragment implements
     private String mTitleString;
     private String mHashtag;
     private String mUrl;
-    private TextView mTagDisplay;
-    private String mRoomId;
 
     private ViewGroup mRootView;
-    private TabHost mTabHost;
     private TextView mTitle;
     private TextView mSubtitle;
     private CompoundButton mStarred;
     
     private TextView mAbstract;
-    private TextView mRequirements;
 
     private NotifyingAsyncQueryHandler mHandler;
 
@@ -120,7 +112,6 @@ public class SessionDetailFragment extends Fragment implements
     @Override
     public void onResume() {
         super.onResume();
-        updateNotesTab();
 
         // Start listening for time updates to adjust "now" bar. TIME_TICK is
         // triggered once per minute, which is how we move the bar over time.
@@ -160,8 +151,6 @@ public class SessionDetailFragment extends Fragment implements
             Bundle savedInstanceState) {
 
         mRootView = (ViewGroup) inflater.inflate(R.layout.fragment_session_detail, null);
-        mTabHost = (TabHost) mRootView.findViewById(android.R.id.tabhost);
-        mTabHost.setup();
 
         mTitle = (TextView) mRootView.findViewById(R.id.session_title);
         mSubtitle = (TextView) mRootView.findViewById(R.id.session_subtitle);
@@ -177,8 +166,6 @@ public class SessionDetailFragment extends Fragment implements
         mAbstract = (TextView) mRootView.findViewById(R.id.session_abstract);
 
         setupSummaryTab();
-        setupNotesTab();
-        setupLinksTab();
 
         return mRootView;
     }
@@ -188,9 +175,9 @@ public class SessionDetailFragment extends Fragment implements
      */
     private void setupSummaryTab() {
         // Summary content comes from existing layout
-        mTabHost.addTab(mTabHost.newTabSpec(TAG_SUMMARY)
-                .setIndicator(buildIndicator(R.string.session_summary))
-                .setContent(R.id.tab_session_summary));
+//        mTabHost.addTab(mTabHost.newTabSpec(TAG_SUMMARY)
+//                .setIndicator(buildIndicator(R.string.session_summary))
+//                .setContent(R.id.tab_session_summary));
     }
 
     /**
@@ -200,13 +187,13 @@ public class SessionDetailFragment extends Fragment implements
      * @param textRes
      * @return View
      */
-    private View buildIndicator(int textRes) {
-        final TextView indicator = (TextView) getActivity().getLayoutInflater()
-                .inflate(R.layout.tab_indicator,
-                        (ViewGroup) mRootView.findViewById(android.R.id.tabs), false);
-        indicator.setText(textRes);
-        return indicator;
-    }
+//    private View buildIndicator(int textRes) {
+////        final TextView indicator = (TextView) getActivity().getLayoutInflater()
+////                .inflate(R.layout.tab_indicator,
+////                        (ViewGroup) mRootView.findViewById(android.R.id.tabs), false);
+////        indicator.setText(textRes);
+////        return indicator;
+//    }
 
     /**
      * Derive {@link com.lullabot.android.apps.iosched.provider.ScheduleContract.Tracks#CONTENT_ITEM_TYPE}
@@ -270,7 +257,6 @@ public class SessionDetailFragment extends Fragment implements
             }
             mHashtag = cursor.getString(SessionsQuery.HASHTAG);
 
-            mRoomId = cursor.getString(SessionsQuery.ROOM_ID);
 
             // Unregister around setting checked state to avoid triggering
             // listener since change isn't user generated.
@@ -293,9 +279,6 @@ public class SessionDetailFragment extends Fragment implements
             }
 
             AnalyticsUtils.getInstance(getActivity()).trackPageView("/Sessions/" + mTitleString);
-
-            updateLinksTab(cursor);
-            updateNotesTab();
 
         } finally {
             cursor.close();
@@ -409,13 +392,6 @@ public class SessionDetailFragment extends Fragment implements
         final Intent intent;
 
         switch (item.getItemId()) {
-            case R.id.menu_map:
-                intent = new Intent(getActivity().getApplicationContext(),
-                        UIUtils.getMapActivityClass(getActivity()));
-                intent.putExtra(MapFragment.EXTRA_ROOM, mRoomId);
-                startActivity(intent);
-                return true;
-
             case R.id.menu_share:
                 // TODO: consider bringing in shortlink to session
                 shareString = getString(R.string.share_template, mTitleString, getHashtagsString(),
@@ -443,20 +419,6 @@ public class SessionDetailFragment extends Fragment implements
                 "Sandbox", isChecked ? "Starred" : "Unstarred", mTitleString, 0);
     }
 
-    /**
-     * Build and add "notes" tab.
-     */
-    private void setupNotesTab() {
-        // Make powered-by clickable
-        ((TextView) mRootView.findViewById(R.id.notes_powered_by)).setMovementMethod(
-                LinkMovementMethod.getInstance());
-
-        // Setup tab
-        mTabHost.addTab(mTabHost.newTabSpec(TAG_NOTES)
-                .setIndicator(buildIndicator(R.string.session_notes))
-                .setContent(R.id.tab_session_notes));
-    }
-
     /*
      * Event structure:
      * Category -> "Session Details"
@@ -481,122 +443,6 @@ public class SessionDetailFragment extends Fragment implements
                 "Link Details", getActivity().getString(actionId), mTitleString, 0);
     }
 
-    private void updateNotesTab() {
-        final CatchNotesHelper helper = new CatchNotesHelper(getActivity());
-        final boolean notesInstalled = helper.isNotesInstalledAndMinimumVersion();
-
-        final Intent marketIntent = helper.notesMarketIntent();
-        final Intent newIntent = helper.createNoteIntent(
-                getString(R.string.note_template, mTitleString, getHashtagsString()));
-        
-        final Intent viewIntent = helper.viewNotesIntent(getHashtagsString());
-
-        // Set icons and click listeners
-        ((ImageView) mRootView.findViewById(R.id.notes_catch_market_icon)).setImageDrawable(
-                UIUtils.getIconForIntent(getActivity(), marketIntent));
-        ((ImageView) mRootView.findViewById(R.id.notes_catch_new_icon)).setImageDrawable(
-                UIUtils.getIconForIntent(getActivity(), newIntent));
-        ((ImageView) mRootView.findViewById(R.id.notes_catch_view_icon)).setImageDrawable(
-                UIUtils.getIconForIntent(getActivity(), viewIntent));
-
-        // Set click listeners
-        mRootView.findViewById(R.id.notes_catch_market_link).setOnClickListener(
-                new View.OnClickListener() {
-                    public void onClick(View view) {
-                        startActivity(marketIntent);
-                        fireNotesEvent(R.string.notes_catch_market_title);
-                    }
-                });
-
-        mRootView.findViewById(R.id.notes_catch_new_link).setOnClickListener(
-                new View.OnClickListener() {
-                    public void onClick(View view) {
-                        startActivity(newIntent);
-                        fireNotesEvent(R.string.notes_catch_new_title);
-                    }
-                });
-
-        mRootView.findViewById(R.id.notes_catch_view_link).setOnClickListener(
-                new View.OnClickListener() {
-                    public void onClick(View view) {
-                        startActivity(viewIntent);
-                        fireNotesEvent(R.string.notes_catch_view_title);
-                    }
-                });
-
-        // Show/hide elements
-        mRootView.findViewById(R.id.notes_catch_market_link).setVisibility(
-                notesInstalled ? View.GONE : View.VISIBLE);
-        mRootView.findViewById(R.id.notes_catch_market_separator).setVisibility(
-                notesInstalled ? View.GONE : View.VISIBLE);
-
-        mRootView.findViewById(R.id.notes_catch_new_link).setVisibility(
-                !notesInstalled ? View.GONE : View.VISIBLE);
-        mRootView.findViewById(R.id.notes_catch_new_separator).setVisibility(
-                !notesInstalled ? View.GONE : View.VISIBLE);
-
-        mRootView.findViewById(R.id.notes_catch_view_link).setVisibility(
-                !notesInstalled ? View.GONE : View.VISIBLE);
-        mRootView.findViewById(R.id.notes_catch_view_separator).setVisibility(
-                !notesInstalled ? View.GONE : View.VISIBLE);
-    }
-
-    /**
-     * Build and add "summary" tab.
-     */
-    private void setupLinksTab() {
-        // Summary content comes from existing layout
-        mTabHost.addTab(mTabHost.newTabSpec(TAG_LINKS)
-                .setIndicator(buildIndicator(R.string.session_links))
-                .setContent(R.id.tab_session_links));
-    }
-
-    private void updateLinksTab(Cursor cursor) {
-        ViewGroup container = (ViewGroup) mRootView.findViewById(R.id.links_container);
-
-        // Remove all views but the 'empty' view
-        int childCount = container.getChildCount();
-        if (childCount > 1) {
-            container.removeViews(1, childCount - 1);
-        }
-
-        LayoutInflater inflater = getLayoutInflater(null);
-
-        boolean hasLinks = false;
-        for (int i = 0; i < SessionsQuery.LINKS_INDICES.length; i++) {
-            final String url = cursor.getString(SessionsQuery.LINKS_INDICES[i]);
-            if (!TextUtils.isEmpty(url)) {
-                hasLinks = true;
-                ViewGroup linkContainer = (ViewGroup)
-                        inflater.inflate(R.layout.list_item_session_link, container, false);
-                ((TextView) linkContainer.findViewById(R.id.link_text)).setText(
-                        SessionsQuery.LINKS_TITLES[i]);
-                final int linkTitleIndex = i;
-                linkContainer.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View view) {
-                        fireLinkEvent(SessionsQuery.LINKS_TITLES[linkTitleIndex]);
-                    	Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-                        startActivity(intent);
-                        
-                    }
-                });
-
-                container.addView(linkContainer);
-
-                // Create separator
-                View separatorView = new ImageView(getActivity());
-                separatorView.setLayoutParams(
-                        new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,
-                                ViewGroup.LayoutParams.WRAP_CONTENT));
-                separatorView.setBackgroundResource(android.R.drawable.divider_horizontal_bright);
-                container.addView(separatorView);
-            }
-        }
-
-        container.findViewById(R.id.empty_links).setVisibility(hasLinks ? View.GONE : View.VISIBLE);
-    }
-
     private String getHashtagsString() {
         if (!TextUtils.isEmpty(mHashtag)) {
             return TagStreamFragment.CONFERENCE_HASHTAG + " " + mHashtag;
@@ -608,7 +454,6 @@ public class SessionDetailFragment extends Fragment implements
     private BroadcastReceiver mPackageChangesReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            updateNotesTab();
         }
     };
     /**
