@@ -16,26 +16,27 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/bg_repeat_light_long"
     android:fillViewport="true">
-
     <LinearLayout android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:padding="@dimen/body_padding_large">
-
+        <TextView android:id="@+id/session_subtitle"
+            android:layout_width="fill_parent"
+            android:text="Summary"
+            style="@style/TextHeader2"
+            android:layout_height="wrap_content"/>
         <TextView android:id="@+id/session_abstract"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             style="@style/TextBody" />
-
-        <LinearLayout android:id="@+id/session_speakers_block"
+		    <LinearLayout android:id="@+id/session_speakers_block"
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:layout_marginTop="@dimen/body_padding_medium">
             <TextView android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:text="@string/session_speakers"
                 style="@style/TextHeader2" />
         </LinearLayout>
@@ -47,6 +48,5 @@
             android:text="@string/empty_session_detail"
             android:gravity="center"
             android:visibility="gone" />
-
     </LinearLayout>
 </ScrollView>
