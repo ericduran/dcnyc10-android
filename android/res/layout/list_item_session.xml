@@ -44,31 +44,41 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             style="@style/SessionRowTitle" />
-        <TextView android:id="@+id/session_with"
+
+        <TextView
+            android:id="@+id/session_with"
+            style="@style/TextHeaderSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@id/session_title"
-            android:layout_width="fill_parent"
+            android:textColor="@color/all_track_color" />
+
+        <TextView
+            android:id="@+id/session_subtitle"
+            style="@style/SessionSubText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/TextHeaderSub" />
-        <TextView android:id="@+id/session_subtitle"
+            android:layout_alignParentLeft="true"
             android:layout_below="@id/session_with"
-            android:layout_toLeftOf="@id/star_button"
-            android:layout_alignParentLeft="true"
-            android:layout_width="fill_parent"
+            android:layout_toLeftOf="@id/star_button" />
+
+        <TextView
+            android:id="@+id/session_keyword"
+            style="@style/SessionSubText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/SessionSubText" />
-        <TextView android:id="@+id/session_keyword"
-            android:layout_below="@id/session_subtitle"
-            android:layout_toLeftOf="@id/star_button"
-            android:layout_alignParentLeft="true"
-            android:layout_width="fill_parent"
+            android:layout_alignBaseline="@+id/session_subtitle"
+            android:layout_alignBottom="@+id/session_subtitle"
+            android:layout_toLeftOf="@+id/session_listing_arrow" />
+
+        <ImageView
+            android:id="@+id/session_listing_arrow"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/SessionSubText" />
+            android:layout_alignParentRight="true"
+            android:layout_alignRight="@+id/session_title"
+            android:layout_centerVertical="true"
+            android:src="@drawable/bg_listing_arrow" />
         
-        <ImageView android:layout_height="wrap_content" 
-        android:src="@drawable/bg_listing_arrow" 
-        android:id="@+id/session_listing_arrow" 
-        android:layout_width="wrap_content" 
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/session_title" /> 
   </RelativeLayout>
 </FrameLayout>

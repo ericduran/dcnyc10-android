@@ -1,17 +1,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:background="@drawable/bg_repeat_light_long"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-
     <RelativeLayout android:id="@+id/header_session"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/body_padding_large"
         android:paddingRight="@dimen/body_padding_large"
-        android:paddingTop="@dimen/body_padding_medium"
-        android:background="@drawable/bg_repeat_light_long"
-        android:paddingBottom="@dimen/body_padding_medium">
-
+        android:paddingTop="@dimen/body_padding_medium" >
         <CheckBox android:id="@+id/star_button"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
@@ -41,35 +38,8 @@
             android:layout_height="wrap_content"
             style="@style/TextHeaderSub" />
     </RelativeLayout>
-    <TabHost android:id="@android:id/tabhost"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-        <LinearLayout android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:background="@drawable/bg_repeat_light_long"
-            android:layout_height="fill_parent">
-           <TextView android:id="@+id/session_subtitle"
-        android:layout_width="fill_parent"
-        android:text="Summary"
-        style="@style/TextHeader2"
-        android:layout_height="wrap_content"/>
-            
-            <TabWidget android:id="@android:id/tabs"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:background="@drawable/tab_off_background" />
-            <FrameLayout android:id="@android:id/tabcontent"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@drawable/bg_repeat_light_long"
-                android:layout_weight="1">
-                <include android:id="@+id/tab_session_summary"
-                    layout="@layout/tab_session_summary" />
-                <include android:id="@+id/tab_session_notes" layout="@layout/tab_session_notes" />
-                <include android:id="@+id/tab_session_links" layout="@layout/tab_session_links" />
-            </FrameLayout>
-        </LinearLayout>
-    </TabHost>
-
+    <include android:id="@+id/tab_session_summary_2"
+      android:layout_height="fill_parent"
+      android:layout_weight="1"
+      layout="@layout/tab_session_summary" />
 </LinearLayout>
