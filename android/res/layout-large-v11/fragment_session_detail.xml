@@ -17,7 +17,6 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-
     <RelativeLayout android:id="@+id/header_session"
         android:layout_width="fill_parent"
         android:paddingLeft="@dimen/body_padding_large"
@@ -50,33 +49,15 @@
             android:layout_height="wrap_content"
             style="@style/TextHeaderSub" />
     </RelativeLayout>
-
-    <TabHost android:id="@android:id/tabhost"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:foreground="@drawable/thickbar_shadow">
-        <LinearLayout android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-            <HorizontalScrollView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:fillViewport="true"
-                android:scrollbars="none">
-                <TabWidget android:id="@android:id/tabs"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/tab_off_background" />
-            </HorizontalScrollView>
-            <FrameLayout android:id="@android:id/tabcontent"
-                android:layout_width="fill_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-                <include android:id="@+id/tab_session_summary"
-                    layout="@layout/tab_session_summary" />
-                <include android:id="@+id/tab_session_links" layout="@layout/tab_session_links" />
-            </FrameLayout>
-        </LinearLayout>
-    </TabHost>
-
+    <LinearLayout android:orientation="vertical"
+    	android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <HorizontalScrollView
+        	android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:scrollbars="none">
+        <include android:id="@+id/tab_session_summary" layout="@layout/tab_session_summary" />
+    	</HorizontalScrollView>
+    </LinearLayout>
 </LinearLayout>
