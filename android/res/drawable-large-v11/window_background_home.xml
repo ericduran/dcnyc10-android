@@ -16,6 +16,4 @@
 
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@drawable/background_noise" />
-    <item android:drawable="@drawable/background_effects" />
-    <item android:drawable="@drawable/home_topleft_strip" />
 </layer-list>
