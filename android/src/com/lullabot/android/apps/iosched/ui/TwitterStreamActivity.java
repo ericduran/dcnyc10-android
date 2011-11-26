@@ -22,7 +22,7 @@ import android.support.v4.app.Fragment;
 public class TwitterStreamActivity extends BaseSinglePaneActivity {
     @Override
     protected Fragment onCreatePane() {
-        return new TagStreamFragment();
+        return new TwitterStreamFragment();
     }
 
     @Override
