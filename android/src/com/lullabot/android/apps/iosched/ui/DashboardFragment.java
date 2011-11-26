@@ -78,8 +78,7 @@ public class DashboardFragment extends Fragment {
         root.findViewById(R.id.home_btn_map).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 fireTrackerEvent("Map");
-            	String uri = "geo:40.770434,-73.987663?q=40.770434,-73.987663(DCNYC10)";
-            	startActivity(new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri)));
+                startActivity(new Intent(getActivity(), FragmentPagerSupport.class));
             }
         });
 

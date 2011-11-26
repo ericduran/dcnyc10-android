@@ -65,6 +65,9 @@
             <meta-data android:name="android.app.searchable" android:resource="@xml/searchable" />
         </activity>
 
+        <activity android:name=".ui.FragmentPagerSupport"
+                android:label="fragment_pager_support">
+        </activity>
         <!-- Phone-only activities -->
 
         <activity
@@ -124,6 +127,7 @@
             android:label="@string/title_map"
             android:configChanges="orientation|keyboardHidden" />
 
+        
         <!-- Tablet-only activities -->
 
         <activity
