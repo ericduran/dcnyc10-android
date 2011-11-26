@@ -65,7 +65,7 @@ public class ScheduleMultiPaneActivity extends BaseMultiPaneActivity implements
         ViewGroup detailContainer = (ViewGroup)
                 findViewById(R.id.fragment_container_schedule_detail);
         if (detailContainer != null && detailContainer.getChildCount() > 0) {
-            findViewById(R.id.fragment_container_schedule_detail).setBackgroundColor(0);
+            findViewById(R.id.fragment_container_schedule_detail);
         }
     }
 
