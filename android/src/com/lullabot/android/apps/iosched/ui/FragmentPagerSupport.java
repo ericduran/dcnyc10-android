@@ -7,24 +7,24 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.ListFragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lullabot.android.apps.iosched.R;
+import com.viewpagerindicator.CirclePageIndicator;
+import com.viewpagerindicator.TitlePageIndicator;
+import com.viewpagerindicator.TitleProvider;
 
 public class FragmentPagerSupport extends FragmentActivity {
-    static final int NUM_ITEMS = 10;
 
     MyAdapter mAdapter;
 
     ViewPager mPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,36 +35,48 @@ public class FragmentPagerSupport extends FragmentActivity {
 
         mPager = (ViewPager)findViewById(R.id.pager);
         mPager.setAdapter(mAdapter);
+		TitlePageIndicator indicator = (TitlePageIndicator)findViewById(R.id.indicator);
+		indicator.setViewPager(mPager);
+		//We set this on the indicator, NOT the pager
+		indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+			@Override
+			public void onPageSelected(int position) {
+			}
 
-        // Watch for button clicks.
-        Button button = (Button)findViewById(R.id.goto_first);
-        button.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                mPager.setCurrentItem(0);
-            }
-        });
-        button = (Button)findViewById(R.id.goto_last);
-        button.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                mPager.setCurrentItem(NUM_ITEMS-1);
-            }
-        });
+			@Override
+			public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+			}
+
+			@Override
+			public void onPageScrollStateChanged(int state) {
+			}
+		});
+
     }
 
-    public static class MyAdapter extends FragmentPagerAdapter {
-        public MyAdapter(FragmentManager fm) {
+    public static class MyAdapter extends FragmentPagerAdapter implements TitleProvider{
+    	protected static final String[] TITLES = new String[] { "Floor 2", "Floor 3", "Floor 6", };
+    	private int mCount = TITLES.length;
+
+
+    	public MyAdapter(FragmentManager fm) {
             super(fm);
         }
 
         @Override
         public int getCount() {
-            return NUM_ITEMS;
+            return mCount;
         }
 
         @Override
         public Fragment getItem(int position) {
             return ArrayListFragment.newInstance(position);
         }
+        
+    	@Override
+    	public String getTitle(int position) {
+    		return MyAdapter.TITLES[position % TITLES.length];
+    	}
     }
 
     public static class ArrayListFragment extends ListFragment {
@@ -102,17 +114,12 @@ public class FragmentPagerSupport extends FragmentActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View v = inflater.inflate(R.layout.fragment_pager_list, container, false);
-            View tv = v.findViewById(R.id.text);
-            ((TextView)tv).setText("Fragment #" + mNum);
             return v;
         }
 
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
-            String[] elements = {"Line 1", "Line 2"};
-            setListAdapter(new ArrayAdapter<String>(getActivity(),
-                    android.R.layout.simple_list_item_1, elements));
         }
     }
 
