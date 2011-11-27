@@ -27,6 +27,7 @@
     <FrameLayout android:id="@+id/list_item_vendor"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:background="@drawable/bg_session_row"
         style="@style/ListItemContent">
 
         <TextView android:id="@+id/vendor_name"
