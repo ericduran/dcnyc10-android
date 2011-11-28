@@ -13,16 +13,16 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
    <ImageView
     android:id="@+id/floor_plan2"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:src="@drawable/floorplan_floor2" />
+    android:layout_height="wrap_content" />
    
     <!-- The frame layout is here since we will be showing either
     the empty view or the list view.  -->

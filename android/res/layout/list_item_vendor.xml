@@ -23,6 +23,7 @@
         android:layout_gravity="top|right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:src="@drawable/indicator_starred" />
 
     <RelativeLayout android:id="@+id/list_item_vendor"
@@ -35,6 +36,7 @@
             android:layout_alignParentLeft="true"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:text="Sample Vendor Name"
             style="@style/ListItemTitle" />
 
         <TextView android:id="@+id/vendor_location"

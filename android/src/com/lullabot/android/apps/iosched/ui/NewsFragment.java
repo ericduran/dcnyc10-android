@@ -35,15 +35,8 @@ import com.lullabot.android.apps.iosched.R;
  * provided as the {@link TagStreamFragment#EXTRA_QUERY} extra in the fragment arguments. If no
  * search query is provided, the conference hashtag is used as the default query.
  */
-public class TagStreamFragment extends Fragment {
+public class NewsFragment extends Fragment {
 
-    private static final String TAG = "TagStreamFragment";
-
-    public static final String EXTRA_QUERY = "com.google.android.iosched.extra.QUERY";
-
-    public static final String CONFERENCE_HASHTAG = "#dcnyc10";
-
-    private String mSearchString;
     private WebView mWebView;
     private View mLoadingSpinner;
 
@@ -51,14 +44,6 @@ public class TagStreamFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final Intent intent = BaseActivity.fragmentArgumentsToIntent(getArguments());
-        mSearchString = intent.getStringExtra(EXTRA_QUERY);
-        if (TextUtils.isEmpty(mSearchString)) {
-            mSearchString = CONFERENCE_HASHTAG;
-        }
-        if (!mSearchString.startsWith("#")) {
-            mSearchString = "#" + mSearchString;
-        }
     }
 
     @Override

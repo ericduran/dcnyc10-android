@@ -89,6 +89,22 @@ public class DashboardFragment extends Fragment {
                 startActivity(new Intent(getActivity(), TwitterStreamActivity.class));                
             }
         });
+        
+        // News Button.
+        root.findViewById(R.id.home_btn_news).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                fireTrackerEvent("News");
+                startActivity(new Intent(getActivity(), NewsActivity.class));                
+            }
+        });
+        // Info Button.
+        root.findViewById(R.id.home_btn_info).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                fireTrackerEvent("News");
+                startActivity(new Intent(getActivity(), InfoActivity.class));                
+            }
+        });
+        
 
         // Sponsors Button.
         root.findViewById(R.id.home_btn_sponsors).setOnClickListener(new View.OnClickListener() {

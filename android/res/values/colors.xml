@@ -14,7 +14,7 @@
   limitations under the License.
   -->
 <resources>
-    <color name="grey">#ffff99</color>
+    <color name="grey">#C0C0C0</color>
     <color name="actionbar_text">#ffffff</color>
 
     <color name="body_text_1">#ff000000</color>

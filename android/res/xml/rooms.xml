@@ -15,14 +15,16 @@
   limitations under the License.
   -->
 <rooms>
-	<room><id>1</id><name>Room 1</name><floor>1</floor></room>
-    <room><id>2</id><name>Room 2</name><floor>2</floor></room>
-    <room><id>3</id><name>Room 3</name><floor>3</floor></room>
-	<room><id>4</id><name>Room 4</name><floor>4</floor></room>
-    <room><id>5</id><name>Room 5</name><floor>5</floor></room>
-    <room><id>6</id><name>Room 6</name><floor>6</floor></room>
-	<room><id>7</id><name>Room 7</name><floor>7</floor></room>
-    <room><id>8</id><name>Room 8</name><floor>8</floor></room>
-    <room><id>9</id><name>Room 9</name><floor>9</floor></room>
-	<room><id>10</id><name>Room 10</name><floor>10</floor></room>
+  <room><id>27</id><name>204H (T)</name><floor>2</floor></room>
+  <room><id>28</id><name>206/207H (T)</name><floor>2</floor></room>
+  <room><id>29</id><name>211H (T)</name><floor>2</floor></room>
+	<room><id>30</id><name>234H (T)</name><floor>2</floor></room>
+  <room><id>31</id><name>330H (T)</name><floor>3</floor></room>
+  <room><id>32</id><name>332H (T)</name><floor>3</floor></room>
+	<room><id>33</id><name>335H (T)</name><floor>3</floor></room>
+  <room><id>34</id><name>603H (T)</name><floor>6</floor></room>
+  <room><id>35</id><name>610H (T)</name><floor>6</floor></room>
+	<room><id>36</id><name>630H (T)</name><floor>6</floor></room>
+  <room><id>37</id><name>Auditorium</name><floor>10</floor></room>
+  <room><id>38</id><name>Cafeteria and MPR</name><floor>10</floor></room>
 </rooms>

@@ -1,5 +1,6 @@
 package com.lullabot.android.apps.iosched.ui;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -12,14 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.lullabot.android.apps.iosched.R;
-import com.viewpagerindicator.CirclePageIndicator;
 import com.viewpagerindicator.TitlePageIndicator;
 import com.viewpagerindicator.TitleProvider;
 
 public class FragmentPagerSupport extends FragmentActivity {
+	static ImageView floorPlan;
 
     MyAdapter mAdapter;
 
@@ -36,6 +36,10 @@ public class FragmentPagerSupport extends FragmentActivity {
         mPager = (ViewPager)findViewById(R.id.pager);
         mPager.setAdapter(mAdapter);
 		TitlePageIndicator indicator = (TitlePageIndicator)findViewById(R.id.indicator);
+		indicator.setTextColor(R.color.all_track_color);
+		indicator.setFooterColor(R.color.block_column_3);
+		indicator.setSelectedColor(R.color.all_track_color);
+
 		indicator.setViewPager(mPager);
 		//We set this on the indicator, NOT the pager
 		indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -73,14 +77,19 @@ public class FragmentPagerSupport extends FragmentActivity {
             return ArrayListFragment.newInstance(position);
         }
         
+        
     	@Override
     	public String getTitle(int position) {
     		return MyAdapter.TITLES[position % TITLES.length];
     	}
+
+    	@Override
+        public void destroyItem(View collection, int position, Object view) {}
     }
 
     public static class ArrayListFragment extends ListFragment {
         int mNum;
+        private static Drawable sBackground;
 
         /**
          * Create a new instance of CountingFragment, providing "num"
@@ -113,8 +122,24 @@ public class FragmentPagerSupport extends FragmentActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
+
             View v = inflater.inflate(R.layout.fragment_pager_list, container, false);
-            return v;
+            floorPlan = (ImageView) v.findViewById(R.id.floor_plan2);
+
+            if (mNum == 0) {
+        		sBackground = getResources().getDrawable(R.drawable.floorplan_floor2);
+        		floorPlan.setImageDrawable(sBackground);
+        	}
+        	if (mNum == 1) {
+        		sBackground = getResources().getDrawable(R.drawable.floorplan_floor3);
+        		floorPlan.setImageDrawable(sBackground);
+        	}
+        	if (mNum == 2) {
+        		sBackground = getResources().getDrawable(R.drawable.floorplan_floor6);
+        		floorPlan.setImageDrawable(sBackground);
+        	}
+
+        	return v;
         }
 
         @Override

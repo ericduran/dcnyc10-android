@@ -66,8 +66,17 @@
         </activity>
 
         <activity android:name=".ui.FragmentPagerSupport"
-                android:label="fragment_pager_support">
+                android:label="fragment_pager_support"
+                android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".ui.NewsActivity"
+            android:label="News" />
+        <activity
+            android:name=".ui.InfoActivity"
+            android:label="Information" />
+        
+            
         <!-- Phone-only activities -->
 
         <activity

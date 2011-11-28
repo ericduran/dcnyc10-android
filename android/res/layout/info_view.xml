@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+<ScrollView
+  android:id="@+id/scrollView1"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content" >
+  <LinearLayout
+   android:id="@+id/linearLayout1"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+    android:orientation="vertical" >
+            
+    <TextView
+        android:paddingLeft="10dp" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wifi Information: "
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:paddingLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SSID: John Jay Guest
+Username: itconf
+Password: itconf"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:paddingLeft="10dp" 
+        android:paddingTop="10dp" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About this App"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:paddingLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This app was build by Eric J. Duran of Lullabot. This was build mostly on my spare time for the DrupalCampNYC 10 Conference. Sorry if it sucks"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:id="@+id/btn_feedback"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|fill_vertical"
+        android:text="Feedback" />
+        </LinearLayout>
+    </ScrollView>
+
+    
+</LinearLayout>
