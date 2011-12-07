@@ -269,7 +269,7 @@ public class SessionsFragment extends ListFragment implements
 
             titleView.setText(ellipsize(cursor.getString(SessionsQuery.TITLE), 45));
             otherView.setText("with " + cursor.getString(SessionsQuery.REQUIREMENTS));
-            keywordView.setText(cursor.getString(SessionsQuery.KEYWORDS));
+            keywordView.setText(ellipsize(cursor.getString(SessionsQuery.KEYWORDS), 15));
             // Format time block this session occupies
             final long blockStart = cursor.getLong(SessionsQuery.BLOCK_START);
             final long blockEnd = cursor.getLong(SessionsQuery.BLOCK_END);

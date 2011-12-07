@@ -59,7 +59,7 @@ public class TwitterStreamFragment extends ListFragment {
             @Override
             protected Void doInBackground(Void... arg0) {
                     try {
-                        tweets = getTweets("drupalcampnyc", 1);
+                        tweets = getTweets("dcnyc10", 1);
                    } catch (Exception e) {
                            Log.e("TwitterFeedActivity", "Error loading JSON", e);
                    }
@@ -109,7 +109,7 @@ public class TwitterStreamFragment extends ListFragment {
         	}
         public ArrayList<Tweet> getTweets(String searchTerm, int page) {
         	  String searchUrl = 
-        	        "http://search.twitter.com/search.json?q=@" 
+        	        "http://search.twitter.com/search.json?q=#" 
         	        + searchTerm + "&rpp=50&page=" + page;
         	    
         	  ArrayList<Tweet> tweets = 

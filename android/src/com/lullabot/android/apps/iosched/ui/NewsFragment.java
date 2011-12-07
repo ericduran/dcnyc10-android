@@ -65,7 +65,7 @@ public class NewsFragment extends Fragment {
             public void run() {
                 mWebView.getSettings().setJavaScriptEnabled(true);
                 mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-                mWebView.loadUrl("http://drupalcampnyc.org/news");
+                mWebView.loadUrl("http://dev.drupalcampnyc.org/mobile/news");
             }
         });
 
