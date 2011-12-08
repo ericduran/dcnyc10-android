@@ -49,10 +49,6 @@ public class HomeActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (!EulaHelper.hasAcceptedEula(this)) {
-            EulaHelper.showEula(false, this);
-        }
-
         AnalyticsUtils.getInstance(this).trackPageView("/Home");
 
         setContentView(R.layout.activity_home);
