@@ -52,10 +52,11 @@
 
         <com.lullabot.android.apps.iosched.ui.widget.BezelImageView android:id="@+id/vendor_logo"
             android:scaleType="centerCrop"
-            android:layout_width="@dimen/vendor_image_size"
-            android:layout_height="@dimen/vendor_image_size"
+            android:layout_width="255px"
+            android:layout_height="175px"
             android:layout_marginTop="@dimen/body_padding_large"
             android:src="@drawable/sandbox_logo_empty"/>
+        
 
         <TextView android:id="@+id/vendor_url"
             android:layout_width="fill_parent"
