@@ -17,19 +17,11 @@
     </track>
 
     <track>
+        <name>Case study</name>
+    </track>
+
+    <track>
         <name>Sysadmin + Performance</name>
-    </track>
-
-    <track>
-        <name>Room 1</name>
-    </track>
-
-    <track>
-        <name>Room 2</name>
-    </track>
-
-    <track>
-        <name>Room 3</name>
     </track>
 
 	<!-- Sponsors -->
@@ -38,6 +30,6 @@
     </track>
 
 	<track>
-        <name>General Sponsor</name>
-    </track>
+        <name>Sponsor</name>
+   </track>
 </tracks>

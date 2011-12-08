@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <blocks>
     <block>
-        <start>2011-12-10T10:00:00.000-04:00</start>
-          <end>2011-12-10T10:30:00.000-04:00</end>
-        <title>Break</title>
+        <start>2011-12-10T09:00:00.000-04:00</start>
+          <end>2011-12-10T10:00:00.000-04:00</end>
+        <title>Welcome and Introduction</title>
         <type>food</type>
     </block>
     <block>
-    	<start>2011-12-10T11:45:00.000-04:00</start>
-     	  <end>2011-12-10T13:45:00.000-04:00</end>
+    	<start>2011-12-10T12:15:00.000-04:00</start>
+     	  <end>2011-12-10T13:15:00.000-04:00</end>
         <title>Lunch</title>
-        <type>food</type>
-    </block>
-    <block>
-        <start>2011-12-10T14:30:00.000-04:00</start>
-          <end>2011-12-10T15:00:00.000-04:00</end>
-        <title>Break</title>
         <type>food</type>
     </block>
 </blocks>
