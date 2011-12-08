@@ -23,9 +23,19 @@
         android:paddingLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SSID: John Jay Guest
-Username: itconf
-Password: itconf"
+        android:text="SSID: John Jay Guest"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:paddingLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username: itconf"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:paddingLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password: itconf"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     <TextView
         android:paddingLeft="10dp" 
@@ -38,9 +48,21 @@ Password: itconf"
         android:paddingLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This app was build by Eric J. Duran of Lullabot. This was build mostly on my spare time for the DrupalCampNYC 10 Conference. Sorry if it sucks"
+        android:text="This app was build by Eric J. Duran of Lullabot. This was build on my spare time for the DrupalCampNYC 10 Conference."
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
+    <TextView
+        android:paddingLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Twitter: @ericjDuran"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:paddingLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Google Plus: +Eric J. Duran"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
     <Button
         android:layout_marginTop="10dp"
         android:id="@+id/btn_feedback"
