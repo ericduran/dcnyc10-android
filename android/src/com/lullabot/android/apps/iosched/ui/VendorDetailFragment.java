@@ -24,6 +24,7 @@ import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -175,7 +176,7 @@ public class VendorDetailFragment extends Fragment implements
             }
 
             mUrl.setText(cursor.getString(VendorsQuery.URL));
-            mDesc.setText(cursor.getString(VendorsQuery.DESC));
+            mDesc.setText(Html.fromHtml(cursor.getString(VendorsQuery.DESC)));
             mProductDesc.setText(cursor.getString(VendorsQuery.PRODUCT_DESC));
 
             mTrackId = cursor.getString(VendorsQuery.TRACK_ID);
