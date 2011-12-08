@@ -80,7 +80,7 @@ public class TagStreamFragment extends Fragment {
             public void run() {
                 mWebView.getSettings().setJavaScriptEnabled(true);
                 mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-                mWebView.loadUrl("http://drupalcampnyc.org/news");
+                mWebView.loadUrl("http://drupalcampnyc.org/mobile/news");
             }
         });
 
