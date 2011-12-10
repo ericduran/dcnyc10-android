@@ -38,7 +38,7 @@ public class AnalyticsUtils {
      * The analytics tracking code for the app.
      */
     // TODO: insert your Analytics UA code here.
-    private static final String UACODE = "INSERT_YOUR_ANALYTICS_UA_CODE_HERE";
+    private static final String UACODE = "UA-27621496-1";
 
     private static final int VISITOR_SCOPE = 1;
     private static final String FIRST_RUN_KEY = "firstRun";
